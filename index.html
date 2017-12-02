@@ -83,12 +83,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p></p><h1>js事件冒泡<h1><p></p>
+        <p></p><h1>学校，听老师讲解事件冒泡和事件捕获机制的时候跟听天书一样，只依稀记得IE使用的是事件冒泡，其他浏览器则是事件捕获。当时的我，把它当成IE浏览器兼容问题，所以没有深究（IE8以下版本的浏览器已基本退出市场）。工作至今，虽然多次遇到该类问题，但均未深究，始终一知半解，遇到了全TM靠猜（选A不行就选B呗）。今天闲来无事自己做了个demo,算是把这个问题彻底搞明白了。<p></p>
+<p>先上结论：他们是描述事件触发时序问题的术语。事件捕获指的是从document到触发事件的那个节点，即自上而下的去触发事件。相反的，事件冒泡是自下而上的去触发事件。绑定事件方法的第三个参数，就是控制事件触发顺序是否为事件捕获。true,事件捕获；false,事件冒泡。默认false,即事件冒泡。Jquery的e.stopPropagation会阻止冒泡，意思就是到我为止，我的爹和祖宗的事件就不要触发了。</p>
+<p>这是HTML结构</p>
+<p>1<br>2<br>3</p>
+<p><div id="parent"><br>　　<div id="child" class="child"></div><br></div><br>现在我们给它们绑定上事件</p>
+<pre><code>document.getElementById(&quot;parent&quot;).addEventListener(&quot;click&quot;,function(e){
+    alert(&quot;parent事件被触发，&quot;+this.id);
+})
+document.getElementById(&quot;child&quot;).addEventListener(&quot;click&quot;,function(e){
+    alert(&quot;child事件被触发，&quot;+this.id)
+})
+</code></pre><p>结果：</p>
+<p>child事件被触发，child<br>parent事件被触发，parent<br>结论：先child，然后parent。事件的触发顺序自内向外，这就是事件冒泡。</p>
+<p>现在改变第三个参数的值为true</p>
+<p>　　　　　　　document.getElementById(“parent”).addEventListener(“click”,function(e){<br>                alert(“parent事件被触发，”+e.target.id);<br>            },true)<br>            document.getElementById(“child”).addEventListener(“click”,function(e){<br>                alert(“child事件被触发，”+e.target.id)<br>            },true)<br>结果：</p>
+<p>parent事件被触发，parent<br>child事件被触发，child<br>结论：先parent,然后child。事件触发顺序变更为自外向内，这就是事件捕获。</p>
+<p>貌似没什么卵用，上一个利用事件冒泡的案例，反正我是经常会用到。</p>
+<p>复制代码<br>　　　　<ul><br>            <li>item1</li><br>            <li>item2</li><br>            <li>item3</li><br>            <li>item4</li><br>            <li>item5</li><br>            <li>item6</li><br>        </ul><br>复制代码<br>需求是这样的：鼠标放到li上对应的li背景变灰。</p>
+<p>利用事件冒泡实现：</p>
+<p>　　　　　　　$(“ul”).on(“mouseover”,function(e){<br>                $(e.target).css(“background-color”,”#ddd”).siblings().css(“background-color”,”white”);<br>            })<br>也许有人会说，我们直接给所有li都绑上事件也可以啊，一点也不麻烦，只要……</p>
+<p>　　　　　　　$(“li”).on(“mouseover”,function(){<br>                $(this).css(“background-color”,”#ddd”).siblings().css(“background-color”,”white”);<br>            })<br>是，这样也行。而且从代码简洁程度上，两者是相若仿佛的。但是，前者少了一个遍历所有li节点的操作，所以在性能上肯定是更优的。</p>
+<p>还有就是，如果我们在绑定事件完成后，页面又动态的加载了一些元素……</p>
+<p>$(“<li>item7</li>“).appendTo(“ul”);<br>这时候，第二种方案，由于绑定事件的时候item7还不存在，所以为了效果，我们还要给它再绑定一次事件。而利用冒泡方案由于是给ul绑的事件……</p>
+<p>高下立判！</p><h1><p></p>
 </h1></h1>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/02/js事件冒泡/" data-id="cjapilo7l0001mzfyoe66z06t" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/12/02/js事件冒泡/" data-id="cjapinsp30000nwfy5kdiplwb" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -133,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/02/hello-world/" data-id="cjapilo7d0000mzfy4iiipx1z" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/12/02/hello-world/" data-id="cjapinspb0001nwfyr8z5jrmq" class="article-share-link">Teilen</a>
       
       
     </footer>
