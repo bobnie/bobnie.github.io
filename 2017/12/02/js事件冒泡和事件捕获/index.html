@@ -5,17 +5,17 @@
   
 
   
-  <title>js事件冒泡 | Hexo</title>
+  <title>js事件冒泡和事件捕获 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="学校，听老师讲解事件冒泡和事件捕获机制的时候跟听天书一样，只依稀记得IE使用的是事件冒泡，其他浏览器则是事件捕获。当时的我，把它当成IE浏览器兼容问题，所以没有深究（IE8以下版本的浏览器已基本退出市场）。工作至今，虽然多次遇到该类问题，但均未深究，始终一知半解，遇到了全TM靠猜（选A不行就选B呗）。今天闲来无事自己做">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js事件冒泡">
-<meta property="og:url" content="http://yoursite.com/2017/12/02/js事件冒泡/index.html">
+<meta property="og:title" content="js事件冒泡和事件捕获">
+<meta property="og:url" content="http://yoursite.com/2017/12/02/js事件冒泡和事件捕获/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="学校，听老师讲解事件冒泡和事件捕获机制的时候跟听天书一样，只依稀记得IE使用的是事件冒泡，其他浏览器则是事件捕获。当时的我，把它当成IE浏览器兼容问题，所以没有深究（IE8以下版本的浏览器已基本退出市场）。工作至今，虽然多次遇到该类问题，但均未深究，始终一知半解，遇到了全TM靠猜（选A不行就选B呗）。今天闲来无事自己做了个demo,算是把这个问题彻底搞明白了。 先上结论：他们是描述事件触发时序问题">
-<meta property="og:updated_time" content="2017-12-02T15:52:10.000Z">
+<meta property="og:updated_time" content="2017-12-02T15:53:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js事件冒泡">
+<meta name="twitter:title" content="js事件冒泡和事件捕获">
 <meta name="twitter:description" content="学校，听老师讲解事件冒泡和事件捕获机制的时候跟听天书一样，只依稀记得IE使用的是事件冒泡，其他浏览器则是事件捕获。当时的我，把它当成IE浏览器兼容问题，所以没有深究（IE8以下版本的浏览器已基本退出市场）。工作至今，虽然多次遇到该类问题，但均未深究，始终一知半解，遇到了全TM靠猜（选A不行就选B呗）。今天闲来无事自己做了个demo,算是把这个问题彻底搞明白了。 先上结论：他们是描述事件触发时序问题">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -63,9 +63,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-js事件冒泡" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-js事件冒泡和事件捕获" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/02/js事件冒泡/" class="article-date">
+    <a href="/2017/12/02/js事件冒泡和事件捕获/" class="article-date">
   <time datetime="2017-12-02T15:48:41.000Z" itemprop="datePublished">2017-12-02</time>
 </a>
     
@@ -77,7 +77,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      js事件冒泡
+      js事件冒泡和事件捕获
     </h1>
   
 
@@ -113,7 +113,7 @@ document.getElementById(&quot;child&quot;).addEventListener(&quot;click&quot;,fu
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/02/js事件冒泡/" data-id="cjapinsp30000nwfy5kdiplwb" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/12/02/js事件冒泡和事件捕获/" data-id="cjapiqeqw0001osfylikj4s9e" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -162,7 +162,7 @@ document.getElementById(&quot;child&quot;).addEventListener(&quot;click&quot;,fu
       <ul>
         
           <li>
-            <a href="/2017/12/02/js事件冒泡/">js事件冒泡</a>
+            <a href="/2017/12/02/js事件冒泡和事件捕获/">js事件冒泡和事件捕获</a>
           </li>
         
           <li>
