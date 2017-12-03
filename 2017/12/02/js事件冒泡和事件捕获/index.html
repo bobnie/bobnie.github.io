@@ -3,11 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>js事件冒泡和事件捕获 | Hexo</title>
-
-  <!-- keywords -->
+  
+  <meta name="description" content="事件冒泡和事件捕获分别由微软和网景公司提出，这两个概念都是为了解决页面中事件流（事件发生顺序）的问题。考虑下面这段代码，就不写html-&amp;gt;head,body之类的代码了，自行脑补    Click me!上面的代码当中一个div元素当中有一个p子元素，如果两个元素都有一个click的处理函数，" />
   
 
+  
+  
+  
+  
+  
+  
+  <title>js事件冒泡和事件捕获 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="事件冒泡和事件捕获分别由微软和网景公司提出，这两个概念都是为了解决页面中事件流（事件发生顺序）的问题。考虑下面这段代码，就不写html-&amp;gt;head,body之类的代码了，自行脑补    Click me!上面的代码当中一个div元素当中有一个p子元素，如果两个元素都有一个click的处理函数，那么我们怎么">
 <meta property="og:type" content="article">
@@ -20,280 +26,155 @@
 <meta name="twitter:title" content="js事件冒泡和事件捕获">
 <meta name="twitter:description" content="事件冒泡和事件捕获分别由微软和网景公司提出，这两个概念都是为了解决页面中事件流（事件发生顺序）的问题。考虑下面这段代码，就不写html-&amp;gt;head,body之类的代码了，自行脑补    Click me!上面的代码当中一个div元素当中有一个p子元素，如果两个元素都有一个click的处理函数，那么我们怎么才能知道哪一个函数会首先被触发呢？为了解决这个问题微软和网景提出了两种几乎完全相反的概念">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
-  
-    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+    <link rel="icon" href="/css/images/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   
-  
-
-  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
-  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
   
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
 </head>
-<body>
-  <div id="container">
-    <div id="particles-js"></div>
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-	<header id="header" class="inner">
-		<a href="/" class="profilepic">
-			
-			<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
-			
-		</a>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Hexo" rel="home">Hexo</a>
+      </h1>
+      
+        <script type="text/javascript" src="http://api.hitokoto.us/rand?encode=js&charset=utf-8"></script>
+        <h2 class="site-description"><script>hitokoto();</script></h2>
+      
+    </hgroup>
 
-		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
-		</hgroup>
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-js事件冒泡和事件捕获" class="post-js事件冒泡和事件捕获 post type-post status-publish format-standard hentry">
+    <!---->
 
-		
-
-		
-			<div class="switch-btn">
-				<div class="icon">
-					<div class="icon-ctn">
-						<div class="icon-wrap icon-house" data-idx="0">
-							<div class="birdhouse"></div>
-							<div class="birdhouse_holes"></div>
-						</div>
-						<div class="icon-wrap icon-ribbon hide" data-idx="1">
-							<div class="ribbon"></div>
-						</div>
-						
-						<div class="icon-wrap icon-link hide" data-idx="2">
-							<div class="loopback_l"></div>
-							<div class="loopback_r"></div>
-						</div>
-						
-						
-					</div>
-					
-				</div>
-				<div class="tips-box hide">
-					<div class="tips-arrow"></div>
-					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
-						
-						<li>友情链接</li>
-						
-						
-					</ul>
-				</div>
-			</div>
-		
-
-		<div class="switch-area">
-			<div class="switch-wrap">
-				<section class="switch-part switch-part1">
-					<nav class="header-menu">
-						<ul>
-						
-							<li><a href="/">主页</a></li>
-				        
-							<li><a href="/archives">所有文章</a></li>
-				        
-						</ul>
-					</nav>
-					<nav class="header-nav">
-						<div class="social">
-							
-						</div>
-					</nav>
-				</section>
-				
-				
-				<section class="switch-part switch-part2">
-					<div class="widget tagcloud" id="js-tagcloud">
-						
-					</div>
-				</section>
-				
-				
-				
-				<section class="switch-part switch-part3">
-					<div id="js-friends">
-					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/smackgg/hexo-theme-smackdown">smackdown</a>
-			        
-			        </div>
-				</section>
-				
-
-				
-			</div>
-		</div>
-	</header>				
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-  	<div class="overlay">
-  		<div class="slider-trigger"></div>
-  		<h1 class="header-author js-mobile-header hide">John Doe</h1>
-  	</div>
-	<div class="intrude-less">
-		<header id="header" class="inner">
-			<div class="profilepic">
-				<img lazy-src="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" class="js-avatar">
-			</div>
-			<hgroup>
-			  <h1 class="header-author">John Doe</h1>
-			</hgroup>
-			
-			<nav class="header-menu">
-				<ul>
-				
-					<li><a href="/">主页</a></li>
-		        
-					<li><a href="/archives">所有文章</a></li>
-		        
-		        <div class="clearfix"></div>
-				</ul>
-			</nav>
-			<nav class="header-nav">
-				<div class="social">
-					
-				</div>
-			</nav>
-		</header>				
-	</div>
-</nav>
-      <div class="body-wrap"><article id="post-js事件冒泡和事件捕获" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/02/js事件冒泡和事件捕获/" class="article-date">
-  	<time datetime="2017-12-02T15:48:41.000Z" itemprop="datePublished">2017-12-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+      <header class="entry-header">
+        
         
   
-    <h1 class="article-title" itemprop="name">
+    <h1 class="entry-title article-title">
       js事件冒泡和事件捕获
-      
     </h1>
   
 
-      </header>
-      
-      <div class="article-info article-info-post">
         
-        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2017/12/02/js事件冒泡和事件捕获/" data-id="cjaqqtakb0001jmmu3xu9mbef" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
 
-        
-        <div class="clearfix"></div>
-      </div>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
+    <div class="entry-content">
       
         <div style="overflow: auto; width: 800px; height: 500px;"><br><h3>事件冒泡和事件捕获分别由微软和网景公司提出，这两个概念都是为了解决页面中事件流（事件发生顺序）的问题。<br>考虑下面这段代码，就不写html-&gt;head,body之类的代码了，自行脑补<br><br><div id="outer"><br>    <p id="inner">Click me!</p><br></div><br>上面的代码当中一个div元素当中有一个p子元素，如果两个元素都有一个click的处理函数，那么我们怎么才能知道哪一个函数会首先被触发呢？<br>为了解决这个问题微软和网景提出了两种几乎完全相反的概念。<br><br>事件冒泡<br>微软提出了名为事件冒泡(event bubbling)的事件流。事件冒泡可以形象地比喻为把一颗石头投入水中，泡泡会一直从水底冒出水面。也就是说，事件会从最内层的元素开始发生，一直向上传播，直到document对象。<br><br>因此在事件冒泡的概念下在p元素上发生click事件的顺序应该是p -&gt; div -&gt; body -&gt; html -&gt; document<br><br>事件捕获<br>网景提出另一种事件流名为事件捕获(event capturing)。与事件冒泡相反，事件会从最外层开始发生，直到最具体的元素。<br><br>因此在事件捕获的概念下在p元素上发生click事件的顺序应该是document -&gt; html -&gt; body -&gt; div -&gt; p<br><br>addEventListener的第三个参数<br>网景 和 微软 曾经的战争还是比较火热的，当时， 网景主张捕获方式，微软主张冒泡方式。后来 w3c 采用折中的方式，平息了战火，制定了统一的标准——先捕获再冒泡。<br>addEventListener的第三个参数就是为冒泡和捕获准备的.<br>addEventListener有三个参数：<br><br>element.addEventListener(event, function, useCapture)<br>第一个参数是需要绑定的事件<br>第二个参数是触发事件后要执行的函数<br>第三个参数默认值是false，表示在事件冒泡阶段调用事件处理函数;如果参数为true，则表示在事件捕获阶段调用处理函数。<br><br>冒泡的案例<br><div id="s1">s1<br>    <div id="s2">s2</div><br></div><br><script><br>    s1.addEventListener(“click”,function(e){<br>        console.log(“s1 冒泡事件”);<br>    },false);<br>    s2.addEventListener(“click”,function(e){<br>        console.log(“s2 冒泡事件”);<br>    },false);<br></script><br>当我们点击s2的时候，执行结果如下：<br><br><br><a href="http://runjs.cn/detail/kj4jgpli点击预览" target="_blank" rel="noopener">http://runjs.cn/detail/kj4jgpli点击预览</a><br><br>捕获的案例<br><div id="s1">s1<br>    <div id="s2">s2</div><br></div><br><script><br>    s1.addEventListener(“click”,function(e){<br>        console.log(“s1 捕获事件”);<br>    },true);<br>    s2.addEventListener(“click”,function(e){<br>        console.log(“s2 捕获事件”);<br>    },true);<br></script><br><br><br><br>事件捕获vs事件冒泡<br>当事件捕获和事件冒泡一起存在的情况，事件又是如何触发呢。<br>这里记被点击的DOM节点为target节点<br><br>document 往 target节点，捕获前进，遇到注册的捕获事件立即触发执行<br>到达target节点，触发事件（对于target节点上，是先捕获还是先冒泡则捕获事件和冒泡事件的注册顺序，先注册先执行）<br>target节点 往 document 方向，冒泡前进，遇到注册的冒泡事件立即触发<br>总结下就是:<br>对于非target节点则先执行捕获在执行冒泡<br>对于target节点则是先执行先注册的事件，无论冒泡还是捕获<br><div id="s1">s1<br>    <div id="s2">s2</div><br></div><br><script><br>s1.addEventListener(“click”,function(e){<br>        console.log(“s1 冒泡事件”);<br>},false);<br>s2.addEventListener(“click”,function(e){<br>        console.log(“s2 冒泡事件”);<br>},false);<br><br>s1.addEventListener(“click”,function(e){<br>        console.log(“s1 捕获事件”);<br>},true);<br><br>s2.addEventListener(“click”,function(e){<br>        console.log(“s2 捕获事件”);<br>},true);<br></script><br><br><br><br>这里大体分析下执行结果<br>点击s2，click事件从document-&gt;html-&gt;body-&gt;s1-&gt;s2(捕获前进)<br>这里在s1上发现了捕获注册事件，则输出”s1 捕获事件”<br>到达s2，已经到达目的节点，<br>s2上注册了冒泡和捕获事件，先注册的冒泡后注册的捕获，则先执行冒泡，输出”s2 冒泡事件”<br>再在s2上执行后注册的事件，即捕获事件，输出”s2 捕获事件”<br>下面进入冒泡阶段，按照s2-&gt;s1-&gt;body-&gt;html-&gt;documen(冒泡前进)<br>在s1上发现了冒泡事件，则输出”s1 冒泡事件”<br><br>事件冒泡与事件捕获应用:事件代理<br>在实际的开发当中，利用事件流的特性，我们可以使用一种叫做事件代理的方法。<br><br><ul id="color-list"><br>    <li>red</li><br>    <li>yellow</li><br>    <li>blue</li><br>    <li>green</li><br>    <li>black</li><br>    <li>white</li><br></ul><br>如果点击页面中的li元素，然后输出li当中的颜色，我们通常会这样写:<br><br>(function(){<br>    var color_list = document.getElementById(‘color-list’);<br>    var colors = color_list.getElementsByTagName(‘li’);<br>    for(var i=0;i<colors.length;i++){ colors[i].addeventlistener('click',showcolor,false);="" };="" function="" showcolor(e){="" var="" x="e.target;" console.log("the="" color="" is="" "="" +="" x.innerhtml);="" })();="" 利用事件流的特性，我们只绑定一个事件处理函数也可以完成：="" (function(){="" color_list="document.getElementById('color-list');" color_list.addeventlistener('click',showcolor,false);="" if(x.nodename.tolowercase()="==" 'li'){="" console.log('the="" '="" }="" 使用事件代理的好处不仅在于将多个事件处理函数减为一个，而且对于不同的元素可以有不同的处理方法。假如上述列表元素当中添加了其他的元素（如：a、span等），我们不必再一次循环给每一个元素绑定事件，直接修改事件代理的事件处理函数即可。="" 冒泡还是捕获？="" 对于事件代理来说，在事件捕获或者事件冒泡阶段处理并没有明显的优劣之分，但是由于事件冒泡的事件流模型被所有主流的浏览器兼容，从兼容性角度来说还是建议大家使用事件冒泡模型。="" ie浏览器兼容="" ie浏览器对addeventlistener兼容性并不算太好，只有ie9以上可以使用。="" 要兼容旧版本的ie浏览器，可以使用ie的attachevent函数="" object.attachevent(event,="" function)="" 两个参数与addeventlistener相似，分别是事件和处理函数，默认是事件冒泡阶段调用处理函数，要注意的是，写事件名时候要加上"on"前缀（"onload"、"onclick"等）。="" 2016年06月06日发布<="" h3=""><br>    </colors.length;i++){></h3></div>
 
       
-    </div>
-    
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2017/12/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <strong class="article-nav-caption">&gt;</strong>
-    </a>
-  
-</nav>
+    </div><!-- .entry-content -->
 
-  
+    <footer class="entry-meta">
+    <a href="/2017/12/02/js事件冒泡和事件捕获/">
+    <time datetime="2017-12-02T15:48:41.000Z" class="entry-date">
+        2017-12-02
+    </time>
+</a>
+    
+    
+    </footer>
 </article>
 
 
-<div class="ds-share share" data-thread-key="js事件冒泡和事件捕获" data-title="js事件冒泡和事件捕获" data-url="http://yoursite.com/2017/12/02/js事件冒泡和事件捕获/"  data-images="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg" data-content="js事件冒泡和事件捕获">
-    <div class="ds-share-inline">
-      <ul  class="ds-share-icons-16">
-      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-      </ul>
-      <div class="ds-share-icons-more">
-      </div>
-    </div>
- </div>
- 
-
-
-
-
-
-</div>
-      <footer id="footer">
-  <div class="outer">
-    <div id="footer-info">
-      <div class="footer-left">
-        &copy; 2017 John Doe
-      </div>
-        <div class="footer-right">
-          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/smackgg/hexo-theme-smackdown" target="_blank">Smackdown</a>
-        </div>
-    </div>
-  </div>
-</footer>
-    </div>
     
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+    
+        <span class="nav-next"><a href="/2017/12/02/hello-world/" rel="next">Hello World <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/2017/12/02/js事件冒泡和事件捕获/">js事件冒泡和事件捕获</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/02/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  
+    
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy; 2017 John Doe
+    All rights reserved.</p>
+    <p>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
-<script>
-	var yiliaConfig = {
-		fancybox: true,
-		mathjax: true,
-		animate: true,
-		isHome: false,
-		isPost: true,
-		isArchive: false,
-		isTag: false,
-		isCategory: false,
-		open_in_new: false
-	}
-</script>
-<script src="/js/main.js"></script>
+<script src="/js/script.js"></script>
 
+<script src="/js/navigation.js"></script>
 
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';                 
-    }       
-});
-</script>
-
-<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
-
+<div id="bg"></div>
 
   </div>
 </body>
