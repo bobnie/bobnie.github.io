@@ -1145,14 +1145,14 @@ a {
   height: 35px;
 }
 .article-entry table thead tr {
-  background: #f8f8f8;
+  background: #ddd;
 }
 .article-entry table tbody tr:hover {
   background: #ddd;
 }
 .article-entry table td,
 .article-entry table th {
-  border: 1px solid #dedede;
+  border: 1px solid #ddd;
   padding: 0 10px;
 }
 .article-entry figure table {
