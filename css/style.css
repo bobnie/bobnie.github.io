@@ -1148,7 +1148,7 @@ a {
   background: #f8f8f8;
 }
 .article-entry table tbody tr:hover {
-  background: #efefef;
+  background: #ddd;
 }
 .article-entry table td,
 .article-entry table th {
@@ -1161,7 +1161,7 @@ a {
   margin: 0;
 }
 .article-entry figure table tbody tr:hover {
-  background: none;
+  background: #ddd;
 }
 .article-meta {
   width: 150px;
