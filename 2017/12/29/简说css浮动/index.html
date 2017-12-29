@@ -9,20 +9,28 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CSS浮动规则详解（推荐）    CSS中float是在一系列详细规则控制浮动元素的摆放位置，可以想象成一个氢气球在封闭盒子里漂浮的平面图。具体的规则有如下几点：  1、浮动元素的左边（右边）外边界不能超出其包含块的左边（右边）的内边界，绝对不会越位溢出的。什么？什么叫包含块？不知道的朋友到前面几篇帖子看看。  2、浮">
+  <meta name="description" content="css浮动基本规则 - CSDN博客                  css浮动基本规则                                                    原创                                2016年06月11日 21:33:53         ">
 <meta name="keywords" content="css">
 <meta property="og:type" content="article">
 <meta property="og:title" content="简说css浮动">
 <meta property="og:url" content="http://yoursite.com/2017/12/29/简说css浮动/index.html">
 <meta property="og:site_name" content="nc的世界">
-<meta property="og:description" content="CSS浮动规则详解（推荐）    CSS中float是在一系列详细规则控制浮动元素的摆放位置，可以想象成一个氢气球在封闭盒子里漂浮的平面图。具体的规则有如下几点：  1、浮动元素的左边（右边）外边界不能超出其包含块的左边（右边）的内边界，绝对不会越位溢出的。什么？什么叫包含块？不知道的朋友到前面几篇帖子看看。  2、浮动元素的左边（右边）外边界必须是包含块中之前出现的浮动元素的右边">
+<meta property="og:description" content="css浮动基本规则 - CSDN博客                  css浮动基本规则                                                    原创                                2016年06月11日 21:33:53              &amp;lt;ul class=&amp;quot;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://images.cnitblog.com/blog/509544/201304/06214408-9ff7e9f7023941ea9e0bc2f596c3e172.png">
-<meta property="og:updated_time" content="2017-12-29T05:52:21.000Z">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju2.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju3.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju4.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju6.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju9.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju10.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju11.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju12.jpg">
+<meta property="og:updated_time" content="2017-12-29T06:01:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="简说css浮动">
-<meta name="twitter:description" content="CSS浮动规则详解（推荐）    CSS中float是在一系列详细规则控制浮动元素的摆放位置，可以想象成一个氢气球在封闭盒子里漂浮的平面图。具体的规则有如下几点：  1、浮动元素的左边（右边）外边界不能超出其包含块的左边（右边）的内边界，绝对不会越位溢出的。什么？什么叫包含块？不知道的朋友到前面几篇帖子看看。  2、浮动元素的左边（右边）外边界必须是包含块中之前出现的浮动元素的右边">
-<meta name="twitter:image" content="http://images.cnitblog.com/blog/509544/201304/06214408-9ff7e9f7023941ea9e0bc2f596c3e172.png">
+<meta name="twitter:description" content="css浮动基本规则 - CSDN博客                  css浮动基本规则                                                    原创                                2016年06月11日 21:33:53              &amp;lt;ul class=&amp;quot;">
+<meta name="twitter:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="nc的世界" type="application/atom+xml">
   
@@ -253,7 +261,471 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <div style="overflow: auto;height: 500px;"><br><meta name="description" content="CSS中float是在一系列详细规则控制浮动元素的摆放位置，可以想象成一个氢气球在封闭盒子里漂浮的平面图。具体的规则有如下几点：  1、浮动元素的左边（右边）外边界不能超出其包含块的左边（右边）的内边界，绝对不会越位溢出的。什么？什么叫包含块？不知道的朋友到前面几篇帖子看看。  2、浮动元素的左边（右边）外边界必须是包含块中之前出现的浮动元素的右边（左边）外边界，请注意前后出现的左右的顺序，也就是"><br>        <h1 class="csdn_top">CSS浮动规则详解（推荐）</h1><br><div id="article_content" class="article_content csdn-tracking-statistics tracking-click" data-mod="popu_519" data-dsm="post"><br><div id="cnblogs_post_body"> <p> </p>  <p>CSS中float是在一系列详细规则控制浮动元素的摆放位置，可以想象成一个氢气球在封闭盒子里漂浮的平面图。具体的规则有如下几点：</p>  <p>1、浮动元素的左边（右边）外边界不能超出其包含块的左边（右边）的内边界，绝对不会越位溢出的。什么？什么叫包含块？不知道的朋友到前面几篇帖子看看。</p>  <p>2、浮动元素的左边（右边）外边界必须是包含块中之前出现的浮动元素的右边（左边）外边界，请注意前后出现的左右的顺序，也就是说只能挨着先出现的浮动元素的右边边界摆放，除非后出现的浮动元素的顶端在先出现的浮动元素的底端下面。如此，浮动元素之间就不会发生重叠，这也是浮动相比定位的优势所在。另外，浮动元素与其他元素不会发生折叠。</p><br><p><a class="highslide-image" href="http://images.cnitblog.com/blog/509544/201304/06214408-9ff7e9f7023941ea9e0bc2f596c3e172.png" target="_blank" data-fancybox-group="button"><img style="display:block;margin-left:auto;margin-right:auto;" src="http://images.cnitblog.com/blog/509544/201304/06214408-9ff7e9f7023941ea9e0bc2f596c3e172.png" alt=""></a><br></p><br><p>3、左浮动元素的右边外边界不会再其右边右浮动元素的左边外边界的右边，同样，右浮动元素的左边外边界不会出现在其左边浮动元素的右边外边界的左边。这两句是不是有点拗口，说简单点就是，左浮动元素和右浮动元素不会出现水平交叉重叠。如果两个方向浮动的元素总宽超出了包含块，则会让后浮动的元素移动到先浮动元素的下方，然后再浮动。</p>  <p>4、一个浮动元素的顶端绝不能比其父元素的内顶端更高。假如一个浮动元素在两个合并外边距之间，摆放这个浮动元素时就好像在这两个元素之间有一个块父元素。这样的规则，可防止浮动元素浮动至共同父元素的顶端。经实际试验发现，浮动元素会浮动到下一个subling元素的内部顶端，若多个浮动元素，则都浮动到下一个非浮动subling元素内部顶端，也就是下一个非浮动的subling元素会延伸其顶端，将前面的浮动元素框入其内，防止浮动元素浮动到父元素的顶端。</p>  <p>5、浮动元素的顶端不能比先浮动的所有元素或块元素更高。</p>  <p>6、浮动元素顶端不能超越浮动之前包含该元素内容的行的顶端。也就是说，若段落中间有个浮动的图像，浮动后的图像最高只能摆放在图像所在行行框的顶端。</p><p>7、浮动元素超出包含块元素边界的情况，浮动元素太大，挤出了边界，另外，设定负的外边距，也可以超出包含块元素边界。</p>  <p>8、浮动元素应该尽可能高地摆放，向左（右）浮动尽可能往左（右）边摆放前提是受前面规则的约束。</p>  <p>另外，当浮动元素与其他元素发生重叠，其内容、边框、背景等该如何显示？CSS2.1规范有说明这些规则（无关出现的先后顺序）：</p>  <p>①、行内框与浮动元素重叠，其边框、背景和内容都在该浮动元素“之上”显示。</p>  <p>②、块框与浮动元素重叠，其边框和背景在该浮动元素“之下”显示，而内容在浮动元素“之上”显示。</p>  <p> </p>  <p> </p></div><br></div><br></div>
+        <div style="overflow: auto;height: 500px;"><br><meta name="description" content="说到元素的浮动，首先要明确一个概念就是包含块(containing block)。所谓浮动元素的包含块，就是其最近的块级祖先元素。我们后面会举例来说明。这里关于浮动的问题，主要有以下几点：
+1、浮动元素的外边界不能超过其包含块的内边界。
+2、浮动元素的外边界是另一浮动元素的外边界。
+3、浮动元素的顶端不能比之前出现的浮动元素的顶端更高。
+4、浮动元素顶端不超过当前行。
+5、clear属性。
+1、浮动"><br>    <meta name="keywords" content="css,浮动"><br>    <meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" media="handheld" href="#"><br>    <meta name="shenma-site-verification" content="5a59773ab8077d4a62bf469ab966a63b_1497598848"><br>    <title>css浮动基本规则 - CSDN博客</title><br>    <link href="http://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON"><br><br><body><br><script id="toolbar-tpl-scriptId" prod="download" skin="black" src="http://c.csdnimg.cn/public/common/toolbar/js/content_toolbar.js" type="text/javascript" domain="http://blog.csdn.net/"></script><br><div class="container clearfix"><br>  <main><br>    <article><br>        <h1 class="csdn_top">css浮动基本规则</h1><br>        <div class="article_bar clearfix"><br>            <div class="artical_tag"><br>                <span class="original"><br>                原创                </span><br>                <span class="time">2016年06月11日 21:33:53</span><br>            </div>
+
+<pre><code>&lt;ul class=&quot;article_tags clearfix csdn-tracking-statistics tracking-click&quot; data-mod=&quot;popu_377&quot; &gt;
+    &lt;li class=&quot;tit&quot;&gt;标签：&lt;/li&gt;
+</code></pre><!--          [startarticletags]-->
+<pre><code>                                                    &lt;li&gt;&lt;a href=&quot;http://so.csdn.net/so/search/s.do?q=css&amp;t=blog&quot; target=&quot;_blank&quot;&gt;css&lt;/a&gt; &lt;span&gt;/&lt;/span&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;http://so.csdn.net/so/search/s.do?q=浮动&amp;t=blog&quot; target=&quot;_blank&quot;&gt;浮动&lt;/a&gt; &lt;span&gt;/&lt;/span&gt;&lt;/li&gt;
+                            &lt;!--          [endarticletags]--&gt;
+    &lt;/ul&gt;
+    &lt;ul class=&quot;right_bar&quot;&gt;
+        &lt;li&gt;&lt;button class=&quot;btn-noborder&quot;&gt;&lt;i class=&quot;icon iconfont icon-read&quot;&gt;&lt;/i&gt;&lt;span class=&quot;txt&quot;&gt;4860&lt;/span&gt;&lt;/button&gt;&lt;/li&gt;
+        &lt;li class=&quot;edit&quot;&gt;
+            &lt;a class=&quot;btn-noborder&quot; href=&quot;&quot; &gt;
+                &lt;i class=&quot;icon iconfont icon-bianji&quot;&gt;&lt;/i&gt;&lt;span class=&quot;txt&quot;&gt;编辑&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;del&quot;&gt;
+            &lt;a class=&quot;btn-noborder&quot; onclick=&quot;javascript:deleteArticle(fileName);return false;&quot;&gt;
+                &lt;i class=&quot;icon iconfont icon-shanchu&quot;&gt;&lt;/i&gt;&lt;span class=&quot;txt&quot;&gt;删除&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&quot;article_content&quot; class=&quot;article_content csdn-tracking-statistics tracking-click&quot; data-mod=&quot;popu_519&quot; data-dsm=&quot;post&quot;&gt;
+                    &lt;div class=&quot;markdown_views&quot;&gt;
+                &lt;p&gt;说到元素的浮动，首先要明确一个概念就是包含块(containing block)。&lt;/p&gt;
+</code></pre><p>所谓浮动元素的包含块，就是其最近的块级祖先元素。我们后面会举例来说明。</p>
+
+<p>这里关于浮动的问题，主要有以下几点：</p>
+
+<ul><br><li>1、浮动元素的外边界不能超过其包含块的内边界。</li><br><li>2、浮动元素的外边界是另一浮动元素的外边界。</li><br><li>3、浮动元素的顶端不能比之前出现的浮动元素的顶端更高。</li><br><li>4、浮动元素顶端不超过当前行。</li><br><li>5、clear属性。</li><br></ul>
+
+
+
+<h2 id="1浮动元素的外边界不能超过其包含块的内边界">1、浮动元素的外边界不能超过其包含块的内边界。</h2>
+
+<p>我们看以下代码：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver">    &lt;<span class="hljs-operator">div</span> class=<span class="hljs-string">"col-md-6"</span> id=<span class="hljs-string">"outerBlock"</span>&gt;
+                &lt;img src=<span class="hljs-string">"images/test1.jpg"</span> style=<span class="hljs-string">"float:right"</span> alt=<span class="hljs-string">"plane"</span> id=<span class="hljs-string">"image1"</span>/&gt;
+                &lt;p id=<span class="hljs-string">"p1"</span>&gt;Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,                            
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.   
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              WheOne day, <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,   
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.   
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   &lt;/p&gt;
+
+            &lt;/<span class="hljs-operator">div</span>&gt;</code></pre>
+
+<p>这段代码看第来比较长，实际上只有3个元素，最外层的<code>div#outerBlock</code>以及其中包含的<code>img#image1</code>和<code>p#p1</code>。</p>
+
+<p>注意代码第2行，我们让<code>img#image1</code>元素向右浮动，此时，该img元素的包含块就为<code>div#outerBlock</code>，也就是最外层的div块。</p>
+
+<p>这段代码会呈现什么效果呢？为了更加清晰地说明问题，我们这里分别给<code>div#outerBlock</code>以及<code>p#p1</code>加上边框以及内边距：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs css"><span class="hljs-tag">div</span><span class="hljs-id">#outerBlock</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1</span>px dotted</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">3</span>em</span></span>;
+<span class="hljs-rule">}</span></span>
+
+<span class="hljs-tag">p</span><span class="hljs-id">#p1</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1</span>px solid</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">3</span>em</span></span>;
+<span class="hljs-rule">}</span></span></code></pre>
+
+<p>效果如下：</p>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg" alt="floating1" title=""></p>
+
+<p>这里我们可以清楚地看到<code>div#outerBlock</code>、<code>img#image1</code>以及<code>p#p1</code>三者的位置关系。</p>
+
+<p><code>div#outerBlock</code>是img元素的包含块，img元素的外边界不得超过其包含块的内边界。由于<code>div#outerBlock</code>元素增加了内边距padding=3em，故img元素的最右侧以及最上侧为虚线内3em。</p>
+
+<p>如果我们给img元素加上2em的外边距，可以预料到img元素右侧及上侧将会为虚线内5em。如下：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs css"><span class="hljs-tag">img</span><span class="hljs-id">#image1</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">margin</span>:<span class="hljs-value"> <span class="hljs-number">2</span>em</span></span>;
+<span class="hljs-rule">}</span></span></code></pre>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju2.jpg" alt="" title=""></p>
+
+<p>虽然看起来img元素很像包含在实线围起来的p元素中，事实上它的位置时依据它的包含块——虚线确定的，只是给img元素增加了2em的外边距，根据<strong>浮动元素外边界不超过其包含块内边界的原则</strong>，图像的边界将距离虚线5em。</p>
+
+<p>接下来，我们做一些改变，将img元素放到<code>p#p1</code>中去，如下：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver">&lt;<span class="hljs-operator">div</span> class=<span class="hljs-string">"col-md-6"</span> id=<span class="hljs-string">"outerBlock"</span>&gt;
+                &lt;p id=<span class="hljs-string">"p1"</span>&gt;Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,                            
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king. 
+                              &lt;img src=<span class="hljs-string">"images/test1.jpg"</span> style=<span class="hljs-string">"float:right"</span> alt=<span class="hljs-string">"plane"</span> id=<span class="hljs-string">"image1"</span>/&gt;                           
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              WheOne day, <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,   
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.   
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   &lt;/p&gt;
+
+            &lt;/<span class="hljs-operator">div</span>&gt;</code></pre>
+
+<p>注意看第9行，将img元素插入到了p元素中间。此时，img元素的包含块就变成了<code>p#p1</code>，页面结果如下：</p>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju3.jpg" alt="" title=""></p>
+
+<p>同样是<strong>浮动元素外边界不超过其包含块内边界的原则</strong>，此时图像的边距离实线距离为2em+3em=5em。此时的位置是根据实线确定的。</p>
+
+
+
+<h2 id="2浮动元素的外边界是另一浮动元素的外边界">2、浮动元素的外边界是另一浮动元素的外边界。</h2>
+
+<p>关于这个问题，实际上是为了避免浮动元素彼此之间的覆盖。也就是说，如果一个向右浮动的元素，碰到了另一个浮动元素，那么它的外边界将是碰到的那个浮动元素的外边界。</p>
+
+<p>看下面的例子，这里我们包含2个img元素在p块中：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver">            &lt;<span class="hljs-operator">div</span> class=<span class="hljs-string">"col-md-6"</span> id=<span class="hljs-string">"outerBlock"</span>&gt;
+                &lt;p id=<span class="hljs-string">"p1"</span>&gt;Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,                            
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king. 
+                              &lt;img src=<span class="hljs-string">"images/test1.jpg"</span> style=<span class="hljs-string">"float:right"</span> alt=<span class="hljs-string">"plane"</span> id=<span class="hljs-string">"image1"</span>/&gt;                           
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,  
+                              &lt;img src=<span class="hljs-string">"images/test1.jpg"</span> style=<span class="hljs-string">"float:right"</span> alt=<span class="hljs-string">"plane"</span> id=<span class="hljs-string">"image2"</span>/&gt;                           
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              WheOne day, <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,   
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.   
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   &lt;/p&gt;
+
+            &lt;/<span class="hljs-operator">div</span>&gt;</code></pre>
+
+<p>注意看代码的9行以及15行，这里我们插入了2个img元素<code>img#image1</code>和<code>img#image2</code>。为了更清楚地展示以上准则，这里给img元素加上内边距以及边框：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs css"><span class="hljs-tag">img</span><span class="hljs-id">#image1</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">2</span>em</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1</span>px solid</span></span>;
+<span class="hljs-rule">}</span></span>
+<span class="hljs-tag">img</span><span class="hljs-id">#image2</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">padding</span>:<span class="hljs-value"> <span class="hljs-number">2</span>em</span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">border</span>:<span class="hljs-value"> <span class="hljs-number">1</span>px solid</span></span>;
+<span class="hljs-rule">}</span></span></code></pre>
+
+<p>得到的效果如下：</p>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju4.jpg" alt="" title=""></p>
+
+<p>说明一下，这里插入内边距是为了使边框更加清晰地展示边界。实际上，正如上面说的，浮动元素的外边界是另一浮动元素的外边界。</p>
+
+<p>这里还有一个细节问题，如果一个包含块中有2个浮动元素，并且这2个浮动元素的外边距宽度之和大于包含块的宽度，那么这2个浮动元素便只能上下排列，如下：</p>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju6.jpg" alt="" title=""></p>
+
+
+
+<h2 id="3浮动元素的顶端不能比之前出现的浮动元素的顶端更高">3、浮动元素的顶端不能比之前出现的浮动元素的顶端更高。</h2>
+
+<p>这句话看起来很抽象，具体来说，假如现在有3个浮动块。第2个块在第1个块的下面，那么第3个块的顶端就是第2个块的顶端，而不会一直浮动到它们的包含块的内边界。</p>
+
+<p>请看下面的代码，我们插入3个浮动块：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs applescript">            &lt;<span class="hljs-keyword">div</span> <span class="hljs-type">class</span>=<span class="hljs-string">"col-md-6"</span> <span class="hljs-property">id</span>=<span class="hljs-string">"outerBlock"</span>&gt;
+                &lt;img src=<span class="hljs-string">"images/test3.jpg"</span> style=<span class="hljs-string">"float:left"</span> alt=<span class="hljs-string">"plane"</span> <span class="hljs-property">id</span>=<span class="hljs-string">"image1"</span>/&gt;
+                &lt;img src=<span class="hljs-string">"images/test4.jpg"</span> style=<span class="hljs-string">"float:left"</span> alt=<span class="hljs-string">"plane"</span> <span class="hljs-property">id</span>=<span class="hljs-string">"image2"</span>/&gt;
+                &lt;img src=<span class="hljs-string">"images/test1.jpg"</span> style=<span class="hljs-string">"float:right"</span> alt=<span class="hljs-string">"plane"</span> <span class="hljs-property">id</span>=<span class="hljs-string">"image3"</span>/&gt;
+                &lt;p <span class="hljs-property">id</span>=<span class="hljs-string">"p1"</span>&gt;Came a <span class="hljs-property">time</span> remembered well,   
+                              When <span class="hljs-keyword">the</span> strong young man <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> rising sun   
+                              Heard <span class="hljs-keyword">the</span> tolling <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> great black bell.   
+                              One <span class="hljs-property">day</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> Year <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> Fox,   
+                              When <span class="hljs-keyword">the</span> bell began <span class="hljs-keyword">to</span> ring,                            
+                              It meant <span class="hljs-keyword">the</span> <span class="hljs-property">time</span> had come <span class="hljs-keyword">for</span> one <span class="hljs-keyword">to</span> go    
+                              To <span class="hljs-keyword">the</span> temple <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> king.                          
+                              There <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just one touch <span class="hljs-keyword">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-keyword">the</span> old man sings,                         
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-keyword">the</span> rush <span class="hljs-keyword">of</span> a thousand wings,    
+                              It shines upon <span class="hljs-keyword">the</span> One.   
+                              And <span class="hljs-keyword">the</span> <span class="hljs-property">day</span> has just begun.   
+                              One <span class="hljs-property">day</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> Year <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> Fox   
+                              Came a <span class="hljs-property">time</span> remembered well,   
+                              WheOne <span class="hljs-property">day</span>, <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> Year <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> Fox   
+                              Came a <span class="hljs-property">time</span> remembered well,   
+                              When <span class="hljs-keyword">the</span> strong young man <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> rising sun   
+                              Heard <span class="hljs-keyword">the</span> tolling <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> great black bell.   
+                              One <span class="hljs-property">day</span> <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> Year <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> Fox,   
+                              When <span class="hljs-keyword">the</span> bell began <span class="hljs-keyword">to</span> ring,   
+                              It meant <span class="hljs-keyword">the</span> <span class="hljs-property">time</span> had come <span class="hljs-keyword">for</span> one <span class="hljs-keyword">to</span> go    
+                              To <span class="hljs-keyword">the</span> temple <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> king.   
+                              There <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just one touch <span class="hljs-keyword">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-keyword">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-keyword">the</span> rush <span class="hljs-keyword">of</span> a thousand wings,    
+                              It shines upon <span class="hljs-keyword">the</span> One.   
+                              And <span class="hljs-keyword">the</span> <span class="hljs-property">day</span> has just begun.   &lt;/p&gt;
+
+            &lt;/<span class="hljs-keyword">div</span>&gt;</code></pre>
+
+<p>注意代码的2、3、4行，我们插入了3个浮动img块。</p>
+
+<p>其中，<code>img#image1</code>向左浮动，<code>img#image2</code>向左浮动，<code>img#image3</code>向右浮动。前2个浮动块由于宽度之和超出了它们的包含块，它们将上下排列，第3个浮动img的上边界是第2个浮动img的上边界，而不是第1个！如下图所示：</p>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju9.jpg" alt="" title=""></p>
+
+<p>如上图所示，第三个浮动块img3，也就是右侧的小飞机，它的上边界不会超过在它之前的浮动元素的上边界。也就是说，它不会一直浮动到和img1等高的位置，它的上边界不超过img2的上边界。</p>
+
+
+
+<h2 id="4浮动元素顶端不超过当前行">4、浮动元素顶端不超过当前行</h2>
+
+<p>这条规则同3的功能类似，作用在于约束浮动块的上浮。主要针对浮动元素之前出现另一元素的情况而言。其实上面我们也看到了，只是没有刻意地拿出来说。不妨举两种情况作为例子来说。</p>
+
+<p>第一种，在一个段落里，出现一个浮动元素。</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver">&lt;<span class="hljs-operator">div</span> class=<span class="hljs-string">"col-md-6"</span> id=<span class="hljs-string">"outerBlock"</span>&gt;
+                &lt;p id=<span class="hljs-string">"p1"</span>&gt;Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,                            
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king. 
+                              &lt;img src=<span class="hljs-string">"images/test1.jpg"</span> style=<span class="hljs-string">"float:right"</span> alt=<span class="hljs-string">"plane"</span> id=<span class="hljs-string">"image1"</span>/&gt;                           
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              WheOne day, <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,   
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.   
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   &lt;/p&gt;
+
+            &lt;/<span class="hljs-operator">div</span>&gt;</code></pre>
+
+<p>注意以上代码的第9行，有一个浮动元素。第4条规则的意思就是说，浮动元素的顶端不会超过其上面<code>To the temple of the king.</code>所在的行。我们具体看以上代码的效果：</p>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju10.jpg" alt="" title=""></p>
+
+<p>第二种情况，如果浮动元素出现在一个段落后面，那么该浮动元素上浮将不能超过该段落的底部。如下：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver">&lt;<span class="hljs-operator">div</span> class=<span class="hljs-string">"col-md-6"</span> id=<span class="hljs-string">"outerBlock"</span>&gt;
+                &lt;p id=<span class="hljs-string">"p1"</span>&gt;Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,                            
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.                          
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              WheOne day, <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,   
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.   
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   &lt;/p&gt;
+                              &lt;img src=<span class="hljs-string">"images/test1.jpg"</span> style=<span class="hljs-string">"float:right"</span> alt=<span class="hljs-string">"plane"</span> id=<span class="hljs-string">"image1"</span>/&gt; 
+
+            &lt;/<span class="hljs-operator">div</span>&gt;</code></pre>
+
+<p>我们将浮动块放在代码37行，处于块级兄弟元素p的后面，它的上浮情况如何呢？</p>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju11.jpg" alt="" title=""></p>
+
+<p>很清楚地看到，浮动元素的顶部在p元素的下方。虽然它的包含块是虚线构成的div元素。</p>
+
+
+
+<h2 id="5clear属性">5、clear属性</h2>
+
+<p>如果我们不希望我们的某段内容流过浮动元素，我们可以使用clear属性，我们下面对比2种情况来看：</p>
+
+
+
+<pre class="prettyprint"><code class=" hljs livecodeserver">            &lt;<span class="hljs-operator">div</span>  class=<span class="hljs-string">"col-md-3"</span> id=<span class="hljs-string">"outerBlock"</span>&gt;
+            &lt;img src=<span class="hljs-string">"images/test1.jpg"</span> style=<span class="hljs-string">"float:right"</span> alt=<span class="hljs-string">"plane"</span> id=<span class="hljs-string">"image1"</span>/&gt;
+                &lt;p id=<span class="hljs-string">"p1"</span>&gt;Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,                            
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.                              
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              WheOne day, <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox   
+                              Came <span class="hljs-operator">a</span> <span class="hljs-built_in">time</span> remembered well,   
+                              When <span class="hljs-operator">the</span> strong young man <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> rising sun   
+                              Heard <span class="hljs-operator">the</span> tolling <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> great <span class="hljs-keyword">black</span> bell.   
+                              One day <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> Year <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> Fox,   
+                              When <span class="hljs-operator">the</span> bell began <span class="hljs-built_in">to</span> ring,   
+                              It meant <span class="hljs-operator">the</span> <span class="hljs-built_in">time</span> had come <span class="hljs-keyword">for</span> <span class="hljs-constant">one</span> <span class="hljs-built_in">to</span> go    
+                              To <span class="hljs-operator">the</span> temple <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> king.   
+                              There <span class="hljs-operator">in</span> <span class="hljs-operator">the</span> <span class="hljs-keyword">middle</span> <span class="hljs-operator">of</span> <span class="hljs-operator">the</span> circle he stands,   
+                              Searching, seeking.   
+                              With just <span class="hljs-constant">one</span> touch <span class="hljs-operator">of</span> his trembling hand,    
+                              The answer will be found.   
+                              Daylight waits <span class="hljs-keyword">while</span> <span class="hljs-operator">the</span> old man sings,   
+                              <span class="hljs-string">"Heaven help me!"</span>   
+                              And <span class="hljs-keyword">then</span> like <span class="hljs-operator">the</span> rush <span class="hljs-operator">of</span> <span class="hljs-operator">a</span> thousand wings,    
+                              It shines upon <span class="hljs-operator">the</span> One.   
+                              And <span class="hljs-operator">the</span> day has just begun.   &lt;/p&gt;
+
+            &lt;/<span class="hljs-operator">div</span>&gt;</code></pre>
+
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju12.jpg" alt="" title=""></p>
+
+<p></p><p>同样的一段代码，右侧的p元素添加<code>clear:right</code>，这样浮动元素将不会出现在其右侧。该p块将会被向下推，直到浮动元素的下面才会显示。</p>                            </div><p></p>
+<p></p></article></main></div><p></p>
+</body></div>
       
     </div>
     
