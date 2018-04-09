@@ -141,7 +141,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/事件冒泡/" style="font-size: 10px;">事件冒泡</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/权限/" style="font-size: 10px;">权限</a> <a href="/tags/视频解析/" style="font-size: 10px;">视频解析</a>
+						<a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/权限/" style="font-size: 20px;">权限</a> <a href="/tags/视频解析/" style="font-size: 10px;">视频解析</a>
 					</div>
 				</section>
 				
@@ -267,10 +267,10 @@
 
 
   
-    <article id="post-liux之文件权限" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Linux之文件权限" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/12/06/liux之文件权限/" class="article-date">
+      <a href="/2017/12/06/Linux之文件权限/" class="article-date">
   	<time datetime="2017-12-05T16:11:32.000Z" itemprop="datePublished">2017-12-06</time>
 </a>
     </div>
@@ -284,7 +284,80 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/06/liux之文件权限/">
+      <a class="article-title" href="/2017/12/06/Linux之文件权限/">
+        Linux之文件权限
+        
+      </a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <div style="height: 500px; overflow: auto;"><br>    <header class="entry-header"><br>    <h1 class="entry-title">Linux之文件权限</h1></header><!-- .entry-header --><br><div class="single-content"><br><p><strong>三种权限：</strong></p><br><ul><br><li>读 - 允许分组读文件（用 r 表示）</li><br><li>写 - 允许分组写文件（用 w 表示）</li><br><li>执行 - 允许分组执行（运行）文件（用 x 表示）</li><br></ul><br><p><strong>四个分组：</strong></p><br><ul><br><li>user - 文件实际的拥有者</li><br><li>group - 用户所在的用户组</li><br><li>others - 用户租外的其他用户</li><br><li>all - 所有用户</li><br></ul><br><p>打开终端并允许 ls -l  （或 ll ）<br><br><strong>结果如下：</strong></p><br><div class="codecolorer-container php default" style="overflow:auto;white-space:nowrap;background-color: #696969;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br></div></td><td><div class="php codecolorer"><span class="br0">&#91;</span>root<span class="sy0">@</span>localhost test<span class="br0">&#93;</span><span class="co2"># pwd<br><br></span><span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>test<br><br><span class="br0">&#91;</span>root<span class="sy0">@</span>localhost test<span class="br0">&#93;</span><span class="co2"># ls -l<br><br></span>total <span class="nu0">4</span><br><br>drwxr<span class="sy0">-</span>xr<span class="sy0">-</span>x <span class="nu0">2</span> root root <span class="nu0">4096</span> Jun <span class="nu0">14</span> <span class="nu0">21</span><span class="sy0">:</span><span class="nu0">40</span> demo<br><br><span class="sy0">-</span>rw<span class="sy0">-</span>r<span class="sy0">–</span>r<span class="sy0">–</span> <span class="nu0">1</span> root root <span class="nu0">0</span> Jun <span class="nu0">14</span> <span class="nu0">21</span><span class="sy0">:</span><span class="nu0">47</span> helloworld<span class="sy0">.</span>java</div></td></tr></tbody></table></div><br><p>注意最左边的像：drwxr-xr-x 应该这样看 d rwx r-x r-x<br><br><strong>列表3部分：</strong></p><br><ul><br><li>rwx</li><br><li>r-x</li><br><li>r-x</li><br></ul><br><p><strong>组和权限的顺序都很重要，顺序总是：</strong></p><br><p>所属者 所属组 其他人 - 分组</p><br><p>读 写 执行 - 权限</p><br><p><a href="https://laod.cn/wp-content/uploads/2016/08/Linux.jpg" class="fancybox" data-fancybox-group="button" target="_blank" rel="noopener"><img class="alignnone size-full wp-image-2434" src="https://laod.cn/wp-content/uploads/2016/08/Linux.jpg" alt="Linux之文件权限" width="638" height="419"></a></p><br><p><strong>权限还可以用数字表示：</strong></p><br><ul><br><li>读 - 4</li><br><li>写 - 2</li><br><li>执行 - 1</li><br></ul><br><p>rwxr-xr-x 可替换 4214-14-1 也可以分组 755</p><br><p>如果你想给文件755权限，可以使用chmod 775 filename</p><br><p>让自己有权限执行</p><br><p>chmod u+x test.sh</p><br><p>让用户及所属组同时拥有执行权限</p><br><p>chmod ug+x test.sh</p><br><p>想去取其他用户的执行权限</p><br><p>chmod o-x test.sh</p><br><p>完全删除文件的可执行权限</p><br><p>chmod a-x test.sh 或者 chmod ugo-x test.sh</p><br><p>开头的 d 代表这是一个目录</p><br><p>假设文件夹demo（包括demo文件夹）及里面的一些脚本，你想移除用户组的写权限</p><br><p>chmod -R g-w demo</p><br><p>参数 R 意味着递归的 chmod 命令</p><br>            </div><br></div>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/权限/">权限</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Linux/">Linux</a>
+	</div>
+
+
+      
+        
+<div class="counter-tag counter">
+    <span id="/2017/12/06/Linux之文件权限/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Linux之文件权限">
+         &nbsp;
+        view
+    </span>
+</div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+      
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-js事件冒泡" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/12/06/js事件冒泡/" class="article-date">
+  	<time datetime="2017-12-05T16:11:32.000Z" itemprop="datePublished">2017-12-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/06/js事件冒泡/">
         Linux之文件权限
         
       </a>
@@ -317,7 +390,7 @@
       
         
 <div class="counter-tag counter">
-    <span id="/2017/12/06/liux之文件权限/" class="leancloud_visitors post-title-link"
+    <span id="/2017/12/06/js事件冒泡/" class="leancloud_visitors post-title-link"
           style="font-size: 12px" data-flag-title="Linux之文件权限">
          &nbsp;
         view
@@ -329,7 +402,7 @@
     </div>
       
         <p class="article-more-link">
-          <a  href="/2017/12/06/liux之文件权限/#more">more >></a>
+          <a  href="/2017/12/06/js事件冒泡/#more">more >></a>
         </p>
       
     
@@ -471,82 +544,6 @@
 <div class="counter-tag counter">
     <span id="/2017/12/04/介绍一款编译神器的插件-atom/" class="leancloud_visitors post-title-link"
           style="font-size: 12px" data-flag-title="介绍一款编译神器的插件(atom)">
-         &nbsp;
-        view
-    </span>
-</div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-      
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-js事件冒泡" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/02/js事件冒泡/" class="article-date">
-  	<time datetime="2017-12-02T15:48:41.000Z" itemprop="datePublished">2017-12-02</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/02/js事件冒泡/">
-        js事件冒泡
-        
-      </a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><style type="text/css" media="screen"><br>    .hljs-tag{<br>        float: all;<br>    }<br></style></p>
-<div style="overflow: auto; height: 500px;"><br><p>下面我们来看看一段代码</p><br><div style="height: 300px; margin: 0;"><br>    <pre class="prettyprint" style="margin: 0;"><code class="language-html hljs "><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">“en”</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">“UTF-8”</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>Click me!<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre><br></div><br><p>如果你点击了其中的div元素，那么这个click事件会按照如下顺序传播：</p><br><p>1、<code>&lt;div&gt;</code><br><br>2、<code>&lt;body&gt;</code><br><br>3、<code>&lt;html&gt;</code><br><br>4、<code>document</code></p><br><div><br><p>也就是说，click事件首先在 <code>&lt;div&gt;</code> 元素上发生，而这个元素就是我们单击的元素。然后，click事件沿着DOM树向上传播，在每一级节点上都会发生，直至传播到 document 对象。</p><br><p>注意：所有现代浏览器都支持事件冒泡，但在具体实现上还是有些差别。IE5.5及更早版本中的事件冒泡会跳过 <code>&lt;html&gt;</code> 元素（从 <code>&lt;body&gt;</code> 直接跳到 <code>document</code>）。IE9、Firefox、Chrome和Safari则将事件一直冒泡到windows对象。</p><br></div>
-
-<p></p><p>好了，那么在理论的基础上，我写了如下实例代码：</p><p></p>
-<div><br><pre class="prettyprint"><code class="language-html hljs "><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">“en”</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">“UTF-8”</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">style</span>&gt;</span><span class="css"><br>        <span class="hljs-id">#father</span> <span class="hljs-rules">{<br>            <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">300</span>px</span></span>;<br>            <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">300</span>px</span></span>;<br>            <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> orange</span></span>;<br>            <span class="hljs-rule"><span class="hljs-attribute">overflow</span>:<span class="hljs-value"> hidden</span></span>;<br>        <span class="hljs-rule">}</span></span><br><br>        <span class="hljs-id">#son</span> <span class="hljs-rules">{<br>            <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">100</span>px</span></span>;<br>            <span class="hljs-rule"><span class="hljs-attribute">height</span>:<span class="hljs-value"> <span class="hljs-number">100</span>px</span></span>;<br>            <span class="hljs-rule"><span class="hljs-attribute">margin</span>:<span class="hljs-value"> <span class="hljs-number">50</span>px</span></span>;<br>            <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> red</span></span>;<br>        <span class="hljs-rule">}</span></span><br>    </span><span class="hljs-tag">&lt;/<span class="hljs-title">style</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">‘father’</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">“son”</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span><br><br>    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">“text/javascript”</span>&gt;</span><span class="javascript"><br>        <span class="hljs-keyword">var</span> father = document.getElementById(<span class="hljs-string">‘father’</span>);<br>        <span class="hljs-keyword">var</span> son = document.getElementById(<span class="hljs-string">‘son’</span>);<br><br>        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stopPropagation</span><span class="hljs-params">(event)</span> {</span><br>            e = window.event || event;<br><br>            <span class="hljs-keyword">if</span>(e.stopPropagation) {<br>                e.stopPropagation();<br>            } <span class="hljs-keyword">else</span> {<br>                e.cancelBubble = <span class="hljs-literal">true</span>;<br>            }<br>        }<br><br>        father.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span><br>            alert(<span class="hljs-string">‘father’</span>);<br>            stopPropagation(e);<br>        }<br><br>        son.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span> {</span><br>            alert(<span class="hljs-string">‘son’</span>);<br>            stopPropagation(e);<br>        }<br>    </span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></code></pre><br></div><br><p>其中的这一段是为了兼容各浏览器而写的，希望各位看官注意：</p><br><div><br><pre class="prettyprint"><code class="language-js hljs "><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">stopPropagation</span><span class="hljs-params">(event)</span> {</span><br>    e = window.event || event;<br><br>    <span class="hljs-keyword">if</span>(e.stopPropagation) {<br>        e.stopPropagation();<br>    } <span class="hljs-keyword">else</span> {<br>        e.cancelBubble = <span class="hljs-literal">true</span>;<br>    }<br>}</code></pre><br></div><br><div><br><p>在这里，我们在点击 son 元素的时候，阻止了事件向上冒泡，这样，当我们点击 son 元素的时候就不会触发 father 元素的点击事件了。</p><br><p>注意，不是所有的事件都可以冒泡，其中blur、focus、load、unload不能冒泡。</p><br><p>好了，JS事件冒泡就写到这里了，希望各位看官能有所收获，照例，如有错误，欢迎指出：) 。</p><br></div><br></div>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/事件冒泡/">事件冒泡</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<a class="article-category-link" href="/categories/js/">js</a>
-	</div>
-
-
-      
-        
-<div class="counter-tag counter">
-    <span id="/2017/12/02/js事件冒泡/" class="leancloud_visitors post-title-link"
-          style="font-size: 12px" data-flag-title="js事件冒泡">
          &nbsp;
         view
     </span>
