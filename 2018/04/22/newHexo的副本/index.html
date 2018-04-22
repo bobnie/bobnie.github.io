@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="nc的世界">
 <meta property="og:description" content="Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-22T15:42:18.000Z">
+<meta property="og:updated_time" content="2018-04-22T15:47:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Promise 对象">
 <meta name="twitter:description" content="Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。">
@@ -265,7 +265,6 @@
 <p>有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，Promise对象提供统一的接口，使得控制异步操作更加容易。</p>
 <p>Promise也有一些缺点。首先，无法取消Promise，一旦新建它就会立即执行，无法中途取消。其次，如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。第三，当处于pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。</p>
 <p>如果某些事件不断地反复发生，一般来说，使用 Stream 模式是比部署Promise更好的选择。</p>
-<hr>
 <p><strong>2.基本用法</strong></p>
 <p>Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。</p>
 <pre><code>promise.then(function(value) {
@@ -345,7 +344,7 @@ getJSON(&quot;/posts.json&quot;).then(function(json) {
   })
   .finally(server.stop);
 </code></pre><p>finally方法的回调函数不接受任何参数，这意味着没有办法知道，前面的 Promise 状态到底是fulfilled还是rejected。这表明，finally方法里面的操作，应该是与状态无关的，不依赖于 Promise 的执行结果。</p>
-<p>inally本质上是then方法的特例。</p>
+<p>finally本质上是then方法的特例。</p>
 <pre><code>promise
 .finally(() =&gt; {
   // 语句
@@ -385,7 +384,31 @@ Promise.reject(3).then(() =&gt; {}, () =&gt; {})
 
 // reject 的值是 3
 Promise.reject(3).finally(() =&gt; {})
-</code></pre><hr>
+</code></pre><p>除了串行执行若干异步任务外，Promise还可以并行执行异步任务。</p>
+<p>试想一个页面聊天系统，我们需要从两个不同的URL分别获得用户的个人信息和好友列表，这两个任务是可以并行执行的，用Promise.all()实现如下：</p>
+<pre><code>var p1 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 500, &apos;P1&apos;);
+});
+var p2 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 600, &apos;P2&apos;);
+});
+// 同时执行p1和p2，并在它们都完成后执行then:
+Promise.all([p1, p2]).then(function (results) {
+    console.log(results); // 获得一个Array: [&apos;P1&apos;, &apos;P2&apos;]
+});
+</code></pre><p>有些时候，多个异步任务是为了容错。比如，同时向两个URL读取用户的个人信息，只需要获得先返回的结果即可。这种情况下，用Promise.race()实现：</p>
+<pre><code>var p1 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 500, &apos;P1&apos;);
+});
+var p2 = new Promise(function (resolve, reject) {
+    setTimeout(resolve, 600, &apos;P2&apos;);
+});
+Promise.race([p1, p2]).then(function (result) {
+    console.log(result); // &apos;P1&apos;
+});
+</code></pre><p>由于p1执行较快，Promise的then()将获得结果’P1’。p2仍在继续执行，但执行结果将被丢弃。</p>
+<p>如果我们组合使用Promise，就可以把很多异步任务以并行和串行的方式组合起来执行。</p>
+<hr>
 <h1 id="至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复"><a href="#至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复" class="headerlink" title="至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复"></a><strong>至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复</strong></h1><hr>
 
       
