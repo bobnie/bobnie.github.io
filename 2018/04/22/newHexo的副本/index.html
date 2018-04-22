@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="nc的世界">
 <meta property="og:description" content="Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-04-22T15:47:51.000Z">
+<meta property="og:updated_time" content="2018-04-22T15:50:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Promise 对象">
 <meta name="twitter:description" content="Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。">
@@ -331,7 +331,7 @@ getJSON(&quot;/posts.json&quot;).then(function(json) {
   console.error(&apos;出错了&apos;, error);
 });
 </code></pre><p>上面代码中，getJSON是对 XMLHttpRequest 对象的封装，用于发出一个针对 JSON 数据的 HTTP 请求，并且返回一个Promise对象。需要注意的是，在getJSON内部，resolve函数和reject函数调用时，都带有参数。</p>
-<p><strong>注意</strong>ffinally方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的。</p>
+<p><strong>(注意)</strong>finally方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的。</p>
 <pre><code>promise
 .then(result =&gt; {···})
 .catch(error =&gt; {···})
