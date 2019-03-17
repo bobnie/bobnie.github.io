@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>js事件冒泡 | nc的世界</title>
+  
+  
+  <meta name="description" content="(前端博客)Web前端开发是从网页制作演变而来,结合个人经历总结的前端入门方法,总结从零基础到具备前端基本技能的道路、学习方法、资料。由于能力有限,不能保证面面俱到,只是作为入门参考,面向初学者,让初学者少走弯路。">
+  
+
+  
+
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+  
+
+  
+
+  
+  <link rel="stylesheet" href="/style.css">
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class='wrapper'>
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href='/' >
+        
+          nc的世界
+        
+      </a>
+			<div class='menu'>
+				<ul class='h-list'>
+          
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="搜索" />
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class='switcher h-list'>
+				
+					<li class='s-search'><a class="fas fa-search fa-fw" href='javascript:void(0)'></a></li>
+				
+				<li class='s-menu'><a class="fas fa-bars fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+
+		<div class='nav-sub container container--flex'>
+			<a class="logo flat-box"></a>
+			<ul class='switcher h-list'>
+				<li class='s-comment'><a class="flat-btn fas fa-comments fa-fw" href='javascript:void(0)'></a></li>
+				<li class='s-toc'><a class="flat-btn fas fa-list fa-fw" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope itemprop="blogPost">
+  
+<section class='meta'>
+  
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">js事件冒泡</h1>
+      
+    
+
+    <div class='new-meta-box'>
+      
+        <div class='new-meta-item author'>
+          <a href="http://yoursite.com">
+            <i class="fas fa-user" aria-hidden="true"></i>
+            Bana Datura
+          </a>
+        </div>
+      
+      
+        <div class="new-meta-item date">
+          <a class='notlink'>
+            <i class="fas fa-clock" aria-hidden="true"></i>
+            2017-12-06
+          </a>
+        </div>
+      
+      
+        
+          
+          <div class='new-meta-item category'>
+            <a href='/categories/Js/'>
+              <i class="fas fa-folder-open" aria-hidden="true"></i>
+              Js
+            </a>
+          </div>
+        
+      
+      
+        
+          <div class="new-meta-item browse busuanzi">
+            <a class='notlink'>
+              <i class="fas fa-eye" aria-hidden="true"></i>
+              <span id="busuanzi_value_page_pv">
+                <i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i>
+              </span>
+            </a>
+          </div>
+        
+      
+      
+    </div>
+    <hr>
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p> 浅谈js事件冒泡，前端笔记</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>下面我们来看看一段代码</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=“en”&gt;
+&lt;head&gt;
+    &lt;meta charset=“UTF-8”&gt;
+    &lt;title&gt;test&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;Click me!&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>如果你点击了其中的div元素，那么这个click事件会按照如下顺序传播:</p>
+<hr>
+<pre><code>1.&lt;div&gt;
+2.&lt;body&gt;
+3.&lt;html&gt;
+4.&lt;document&gt;
+</code></pre><hr>
+<hr>
+<p>也就是说，click事件首先在 <div> 元素上发生，而这个元素就是我们单击的元素。然后，click事件沿着DOM树向上传播，在每一级节点上都会发生，直至传播到 document 对象。</div></p>
+<p>注意：所有现代浏览器都支持事件冒泡，但在具体实现上还是有些差别。IE5.5及更早版本中的事件冒泡会跳过 <html> 元素（从 <body> 直接跳到 document）。IE9、Firefox、Chrome和Safari则将事件一直冒泡到windows对象。</body></html></p>
+<hr>
+<p>好了，那么在理论的基础上，我写了如下实例代码:</p>
+<hr>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=“en”&gt;
+&lt;head&gt;
+    &lt;meta charset=“UTF-8”&gt;
+    &lt;title&gt;test&lt;/title&gt;
+    &lt;style&gt;
+        #father {
+            width: 300px;
+            height: 300px;
+            background: orange;
+            overflow: hidden;
+        }
+        #son {
+            width: 100px;
+            height: 100px;
+            margin: 50px;
+            background: red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=‘father’&gt;
+        &lt;div id=“son”&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;script type=“text/javascript”&gt;
+        var father = document.getElementById(‘father’);
+        var son = document.getElementById(‘son’);
+        function stopPropagation(event) {
+            e = window.event || event;
+            if(e.stopPropagation) {
+                e.stopPropagation();
+            } else {
+                e.cancelBubble = true;
+            }
+        }
+        father.onclick = function(e) {
+            alert(‘father’);
+            stopPropagation(e);
+        }
+        son.onclick = function(e) {
+            alert(‘son’);
+            stopPropagation(e);
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><hr>
+<p>其中的这一段是为了兼容各浏览器而写的，希望各位看官注意:</p>
+<pre><code>function stopPropagation(event) {
+    e = window.event || event;
+    if(e.stopPropagation) {
+        e.stopPropagation();
+    } else {
+        e.cancelBubble = true;
+    }
+}
+</code></pre><p>在这里，我们在点击 son 元素的时候，阻止了事件向上冒泡，这样，当我们点击 son 元素的时候就不会触发 father 元素的点击事件了。</p>
+<p>注意，不是所有的事件都可以冒泡，其中blur、focus、load、unload不能冒泡。</p>
+<p>好了，JS事件冒泡就写到这里了，希望各位看官能有所收获，照例，如有错误，欢迎指出：) 。</p>
+<p>===</p>
+<h1 id="至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复"><a href="#至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复" class="headerlink" title="至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复"></a><strong>至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复</strong></h1><hr>
+
+      </div>
+        
+          <section class='meta' id="footer-meta">
+            <hr>
+            <div class='new-meta-box'>
+              
+                <div class="new-meta-item date" itemprop="dateUpdated" datetime="2018-04-09T23:11:15+08:00">
+                  <a class='notlink'>
+                    <i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                    2018-04-09
+                  </a>
+                </div>
+              
+              
+                
+                <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Js/"><i class="fas fa-hashtag" aria-hidden="true"></i>&nbsp;Js</a></div>
+              
+              
+            </div>
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                    <section class="prev">
+                        <span class="art-item-left">
+                            <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;上一页</h6>
+                            <h4>
+                                <a href="/2017/12/29/简说css浮动/" rel="prev" title="简说css浮动">
+                                  
+                                      简说css浮动
+                                  
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/css/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>css</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>下一页&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2017/12/04/VIP视频解析使用教程/" rel="prev" title="VIP视频解析使用教程">
+                                    
+                                        VIP视频解析使用教程
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/视频解析/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>视频解析</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+
+
+<script>
+    window.subData = {
+        title: 'js事件冒泡',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+  
+  <br>
+  <div><p>博客内容遵循 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</a></p>
+</div>
+  <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，总访问量为 <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script async src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+  
+
+  
+  
+  
+  
+
+  
+    <script src="/js/app.js"></script>
+<script src="/js/search.js"></script>
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+</body>
+</html>
