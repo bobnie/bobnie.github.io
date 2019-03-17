@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="baidu-site-verification" content="L6Lm9d5Crl"/>
+  
+  
+  
+  
+  <title>简说css浮动 | nc的世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="了解一下css浮动基本规则">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简说css浮动">
+<meta property="og:url" content="http://yoursite.com/2017/12/29/简说css浮动/index.html">
+<meta property="og:site_name" content="nc的世界">
+<meta property="og:description" content="了解一下css浮动基本规则">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju2.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju3.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju4.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju6.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju9.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju10.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju11.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju12.jpg">
+<meta property="og:updated_time" content="2018-04-09T15:47:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简说css浮动">
+<meta name="twitter:description" content="了解一下css浮动基本规则">
+<meta name="twitter:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="nc的世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/avatar.png" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Bana Datura</a></h1>
+        </hgroup>
+        
+        <p class="header-subtitle">我究竟是谁，又将站在怎样的高度，见到怎样的人呢/-续</p>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="/archives/">所有文章</a></li>
+                        
+                            <li><a  href="/categories/开发工具/">玩转开发工具</a></li>
+                        
+                            <li><a  href="/categories/digital">玩转数码</a></li>
+                        
+                            <li><a  href="/categories/algorithm">算法学习</a></li>
+                        
+                            <li><a  href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl github"  target="_blank" href="/xxxxx" title="github">github</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Js/" style="font-size: 10px;">Js</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/权限/" style="font-size: 10px;">权限</a> <a href="/tags/视频解析/" style="font-size: 10px;">视频解析</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://blog.csdn.net/baidu_21483933">csdn</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://segmentfault.com/blog/maocg_web">segmentfault</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.jianshu.com/users/eb37ef89c746/latest_articles">简书</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">爱动漫,爱游戏,爱编程,爱运动,爱的太多了!</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Bana Datura</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/avatar.png" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Bana Datura</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">我究竟是谁，又将站在怎样的高度，见到怎样的人呢/-续</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/categories/开发工具/">玩转开发工具</a></li>
+                
+                    <li><a href="/categories/digital">玩转数码</a></li>
+                
+                    <li><a href="/categories/algorithm">算法学习</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="github" target="_blank" href="/xxxxx" title="github">github</a>
+                    
+                        <a class="weibo" target="_blank" href="/xxxxxxxx" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-简说css浮动" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a  href="/2017/12/29/简说css浮动/" class="article-date">
+      <time datetime="2017-12-28T16:39:00.000Z" itemprop="datePublished">2017-12-29</time>
+</a>
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      简说css浮动
+    </h1>
+  
+
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/css/">css</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p> 了解一下css浮动基本规则</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>说到元素的浮动，首先要明确一个概念就是包含块(containing block)。</p>
+<p>所谓浮动元素的包含块，就是其最近的块级祖先元素。我们后面会举例来说明。</p>
+<p>这里关于浮动的问题，主要有以下几点：</p>
+<blockquote>
+<ul>
+<li>1、浮动元素的外边界不能超过其包含块的内边界。</li>
+<li>2、浮动元素的外边界是另一浮动元素的外边界。</li>
+<li>3、浮动元素的顶端不能比之前出现的浮动元素的顶端更高。</li>
+<li>4、浮动元素顶端不超过当前行。</li>
+<li>5、clear属性。</li>
+</ul>
+</blockquote>
+<p><strong>1、浮动元素的外边界不能超过其包含块的内边界。</strong></p>
+<hr>
+<p>我们看以下代码：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+            &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+            &lt;p id=“p1”&gt;Came a time remembered well,
+                          When the strong young man of the rising sun
+                          Heard the tolling of the great black bell.
+                          One day in the Year of the Fox,
+                          When the bell began to ring,
+                          It meant the time had come for one to go
+                          To the temple of the king.
+                          There in the middle of the circle he stands,
+                          Searching, seeking.
+                          With just one touch of his trembling hand,
+                          The answer will be found.
+                          Daylight waits while the old man sings,
+                          “Heaven help me!”
+                          And then like the rush of a thousand wings,
+                          It shines upon the One.
+                          And the day has just begun.
+                          One day in the Year of the Fox
+                          Came a time remembered well,
+                          WheOne day, in the Year of the Fox
+                          Came a time remembered well,
+                          When the strong young man of the rising sun
+                          Heard the tolling of the great black bell.
+                          One day in the Year of the Fox,
+                          When the bell began to ring,
+                          It meant the time had come for one to go
+                          To the temple of the king.
+                          There in the middle of the circle he stands,
+                          Searching, seeking.
+                          With just one touch of his trembling hand,
+                          The answer will be found.
+                          Daylight waits while the old man sings,
+                          “Heaven help me!”
+                          And then like the rush of a thousand wings,
+                          It shines upon the One.
+                          And the day has just begun.   &lt;/p&gt;
+        &lt;/div&gt;
+</code></pre><p>这段代码看第来比较长，实际上只有3个元素，最外层的div#outerBlock以及其中包含的img#image1和p#p1。</p>
+<p>注意代码第2行，我们让img#image1元素向右浮动，此时，该img元素的包含块就为div#outerBlock，也就是最外层的div块。</p>
+<p>这段代码会呈现什么效果呢？为了更加清晰地说明问题，我们这里分别给div#outerBlock以及p#p1加上边框以及内边距：</p>
+<pre><code>div#outerBlock {
+    border: 1px dotted;
+    padding: 3em;
+}
+p#p1 {
+    border: 1px solid;
+    padding: 3em;
+}
+</code></pre><p>效果如下：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>这里我们可以清楚地看到div#outerBlock、img#image1以及p#p1三者的位置关系。</p>
+<p>div#outerBlock是img元素的包含块，img元素的外边界不得超过其包含块的内边界。由于div#outerBlock元素增加了内边距padding=3em，故img元素的最右侧以及最上侧为虚线内3em。</p>
+<p>如果我们给img元素加上2em的外边距，可以预料到img元素右侧及上侧将会为虚线内5em。如下：</p>
+<pre><code>img#image1 {
+    margin: 2em;
+}
+</code></pre><p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju2.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>虽然看起来img元素很像包含在实线围起来的p元素中，事实上它的位置时依据它的包含块——虚线确定的，只是给img元素增加了2em的外边距，根据浮动元素外边界不超过其包含块内边界的原则，图像的边界将距离虚线5em。</p>
+<p>接下来，我们做一些改变，将img元素放到p#p1中去，如下：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+                &lt;p id=“p1”&gt;Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.
+                              One day in the Year of the Fox
+                              Came a time remembered well,
+                              WheOne day, in the Year of the Fox
+                              Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.   &lt;/p&gt;
+            &lt;/div&gt;
+</code></pre><p>注意看第9行，将img元素插入到了p元素中间。此时，img元素的包含块就变成了p#p1，页面结果如下：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju3.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>同样是浮动元素外边界不超过其包含块内边界的原则，此时图像的边距离实线距离为2em+3em=5em。此时的位置是根据实线确定的。</p>
+<p><strong>2、浮动元素的外边界是另一浮动元素的外边界。</strong></p>
+<hr>
+<p>关于这个问题，实际上是为了避免浮动元素彼此之间的覆盖。也就是说，如果一个向右浮动的元素，碰到了另一个浮动元素，那么它的外边界将是碰到的那个浮动元素的外边界。</p>
+<p>看下面的例子，这里我们包含2个img元素在p块中：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+    &lt;p id=“p1”&gt;Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image2”/&gt;
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.
+                  One day in the Year of the Fox
+                  Came a time remembered well,
+                  WheOne day, in the Year of the Fox
+                  Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.   &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p>注意看代码的9行以及15行，这里我们插入了2个img元素img#image1和img#image2。为了更清楚地展示以上准则，这里给img元素加上内边距以及边框：</p>
+<pre><code>img#image1 {
+    padding: 2em;
+    border: 1px solid;
+}
+img#image2 {
+    padding: 2em;
+    border: 1px solid;
+}
+</code></pre><p>得到的效果如下：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju4.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>说明一下，这里插入内边距是为了使边框更加清晰地展示边界。实际上，正如上面说的，浮动元素的外边界是另一浮动元素的外边界。</p>
+<p>这里还有一个细节问题，如果一个包含块中有2个浮动元素，并且这2个浮动元素的外边距宽度之和大于包含块的宽度，那么这2个浮动元素便只能上下排列，如下：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju6.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p><strong>3、浮动元素的顶端不能比之前出现的浮动元素的顶端更高。</strong></p>
+<hr>
+<p>这句话看起来很抽象，具体来说，假如现在有3个浮动块。第2个块在第1个块的下面，那么第3个块的顶端就是第2个块的顶端，而不会一直浮动到它们的包含块的内边界。</p>
+<p>请看下面的代码，我们插入3个浮动块：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+    &lt;img src=“images/test3.jpg” style=“float:left” alt=“plane” id=“image1”/&gt;
+    &lt;img src=“images/test4.jpg” style=“float:left” alt=“plane” id=“image2”/&gt;
+    &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image3”/&gt;
+    &lt;p id=“p1”&gt;Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.
+                  One day in the Year of the Fox
+                  Came a time remembered well,
+                  WheOne day, in the Year of the Fox
+                  Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.   &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p>注意代码的2、3、4行，我们插入了3个浮动img块。</p>
+<p>其中，img#image1向左浮动，img#image2向左浮动，img#image3向右浮动。前2个浮动块由于宽度之和超出了它们的包含块，它们将上下排列，第3个浮动img的上边界是第2个浮动img的上边界，而不是第1个！如下图所示：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju9.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>如上图所示，第三个浮动块img3，也就是右侧的小飞机，它的上边界不会超过在它之前的浮动元素的上边界。也就是说，它不会一直浮动到和img1等高的位置，它的上边界不超过img2的上边界。</p>
+<p><strong>4、浮动元素顶端不超过当前行</strong></p>
+<hr>
+<p>这条规则同3的功能类似，作用在于约束浮动块的上浮。主要针对浮动元素之前出现另一元素的情况而言。其实上面我们也看到了，只是没有刻意地拿出来说。不妨举两种情况作为例子来说。</p>
+<p>第一种，在一个段落里，出现一个浮动元素。</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+                &lt;p id=“p1”&gt;Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.
+                              One day in the Year of the Fox
+                              Came a time remembered well,
+                              WheOne day, in the Year of the Fox
+                              Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.   &lt;/p&gt;
+            &lt;/div&gt;
+</code></pre><p>注意以上代码的第9行，有一个浮动元素。第4条规则的意思就是说，浮动元素的顶端不会超过其上面To the temple of the king.所在的行。我们具体看以上代码的效果：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju10.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>第二种情况，如果浮动元素出现在一个段落后面，那么该浮动元素上浮将不能超过该段落的底部。如下：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+                &lt;p id=“p1”&gt;Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.
+                              One day in the Year of the Fox
+                              Came a time remembered well,
+                              WheOne day, in the Year of the Fox
+                              Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.   &lt;/p&gt;
+                              &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+            &lt;/div&gt;
+</code></pre><p>我们将浮动块放在代码37行，处于块级兄弟元素p的后面，它的上浮情况如何呢？</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju11.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>很清楚地看到，浮动元素的顶部在p元素的下方。虽然它的包含块是虚线构成的div元素。</p>
+<p><strong>5、clear属性</strong></p>
+<hr>
+<p>如果我们不希望我们的某段内容流过浮动元素，我们可以使用clear属性，我们下面对比2种情况来看：</p>
+<pre><code>&lt;div  class=“col-md-3” id=“outerBlock”&gt;
+&lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+    &lt;p id=“p1”&gt;Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.
+                  One day in the Year of the Fox
+                  Came a time remembered well,
+                  WheOne day, in the Year of the Fox
+                  Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.   &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju12.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>同样的一段代码，右侧的p元素添加clear:right，这样浮动元素将不会出现在其右侧。该p块将会被向下推，直到浮动元素的下面才会显示。</p>
+<h1 id="至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复"><a href="#至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复" class="headerlink" title="至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复"></a><strong>至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复</strong></h1><hr>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a  href="/2017/12/29/简说css浮动/">简说css浮动</a></p>
+        <p><span>文章作者:</span><a  href="/" title="访问 Bana Datura 的个人博客">Bana Datura</a></p>
+        <p><span>发布时间:</span>2017年12月29日 - 00时39分</p>
+        <p><span>最后更新:</span>2018年04月09日 - 23时47分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/12/29/简说css浮动/" title="简说css浮动">http://yoursite.com/2017/12/29/简说css浮动/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/12/29/简说css浮动/　　作者: Bana Datura" title=""></span>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a  href="/2018/04/22/promise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Promise 对象
+        
+      </div>
+    </a>
+  
+  
+    <a  href="/2017/12/06/js事件冒泡/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js事件冒泡</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复"><span class="toc-number"></span> <span class="toc-text">至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复</span></a>
+</div>
+<style>
+    .left-col .switch-btn {
+        display: none;
+    }
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+            $(".switch-btn, .switch-area").fadeOut(300);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+            $(".switch-btn, .switch-area").fadeIn(500);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+        $(".switch-btn, .switch-area").show();
+    }
+</script>
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+        <section class="changyan" id="comments">
+  <!--<div id="uyan_frame"></div>-->
+  <div id="SOHUCS"></div>
+  <script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js"></script>
+  <script type="text/javascript">
+    window.changyan.api.config({
+      appid: 'xxxx',
+      conf: 'xxxxxxxxx'
+    });
+  </script>
+</section>
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a  href="/2018/04/22/promise/" title="上一篇: Promise 对象">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a  href="/2017/12/06/js事件冒泡/" title="下一篇: js事件冒泡">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/04/22/promise/">Promise 对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/29/简说css浮动/">简说css浮动</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/06/js事件冒泡/">js事件冒泡</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/04/VIP视频解析使用教程/">VIP视频解析使用教程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/04/介绍一款编译神器的插件-atom/">介绍一款编译神器的插件(atom)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/Linux之文件权限/">Linux之文件权限</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/11/25/newHexo/">搭建你的Hexo博客</a></li></ul>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+    <script>
+        $(".post-list").addClass("toc-article");
+        // $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#toc, .switch-btn, .switch-area").toggle();
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+                $(".switch-btn, .switch-area").fadeToggle(300);
+            }
+        })
+    </script>
+
+
+
+
+    <script>
+        
+    </script>
+
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2019 Bana Datura
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo &nbsp;&nbsp;</a><a href="https://github.com/maochunguang" target="_blank">Blog</a> by tommy
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >极客到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 1;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'xxxxx', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "//hm.baidu.com/hm.js?xxxxxx";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
