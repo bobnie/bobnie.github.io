@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8">
+<title>简说css浮动 - nc的世界</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+
+
+    <meta name="description" content="了解一下css浮动基本规则">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简说css浮动">
+<meta property="og:url" content="http://yoursite.com/2017/12/29/简说css浮动/index.html">
+<meta property="og:site_name" content="nc的世界">
+<meta property="og:description" content="了解一下css浮动基本规则">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju2.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju3.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju4.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju6.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju9.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju10.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju11.jpg">
+<meta property="og:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju12.jpg">
+<meta property="og:updated_time" content="2018-04-09T15:47:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简说css浮动">
+<meta name="twitter:description" content="了解一下css浮动基本规则">
+<meta name="twitter:image" content="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg">
+
+
+
+
+
+<link rel="icon" href="/images/favicon.svg">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
+
+
+    
+    
+    
+    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+    
+
+    
+    
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+    
+
+    
+    
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+<link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+    
+    
+    
+
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.svg" alt="简说css浮动" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-12-28T16:39:00.000Z">2017-12-29</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/css/">css</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    24 分钟 读完 (大约 3575 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                简说css浮动
+            
+        </h1>
+        <div class="content">
+            <p> 了解一下css浮动基本规则</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><p>说到元素的浮动，首先要明确一个概念就是包含块(containing block)。</p>
+<p>所谓浮动元素的包含块，就是其最近的块级祖先元素。我们后面会举例来说明。</p>
+<p>这里关于浮动的问题，主要有以下几点：</p>
+<blockquote>
+<ul>
+<li>1、浮动元素的外边界不能超过其包含块的内边界。</li>
+<li>2、浮动元素的外边界是另一浮动元素的外边界。</li>
+<li>3、浮动元素的顶端不能比之前出现的浮动元素的顶端更高。</li>
+<li>4、浮动元素顶端不超过当前行。</li>
+<li>5、clear属性。</li>
+</ul>
+</blockquote>
+<p><strong>1、浮动元素的外边界不能超过其包含块的内边界。</strong></p>
+<hr>
+<p>我们看以下代码：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+            &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+            &lt;p id=“p1”&gt;Came a time remembered well,
+                          When the strong young man of the rising sun
+                          Heard the tolling of the great black bell.
+                          One day in the Year of the Fox,
+                          When the bell began to ring,
+                          It meant the time had come for one to go
+                          To the temple of the king.
+                          There in the middle of the circle he stands,
+                          Searching, seeking.
+                          With just one touch of his trembling hand,
+                          The answer will be found.
+                          Daylight waits while the old man sings,
+                          “Heaven help me!”
+                          And then like the rush of a thousand wings,
+                          It shines upon the One.
+                          And the day has just begun.
+                          One day in the Year of the Fox
+                          Came a time remembered well,
+                          WheOne day, in the Year of the Fox
+                          Came a time remembered well,
+                          When the strong young man of the rising sun
+                          Heard the tolling of the great black bell.
+                          One day in the Year of the Fox,
+                          When the bell began to ring,
+                          It meant the time had come for one to go
+                          To the temple of the king.
+                          There in the middle of the circle he stands,
+                          Searching, seeking.
+                          With just one touch of his trembling hand,
+                          The answer will be found.
+                          Daylight waits while the old man sings,
+                          “Heaven help me!”
+                          And then like the rush of a thousand wings,
+                          It shines upon the One.
+                          And the day has just begun.   &lt;/p&gt;
+        &lt;/div&gt;
+</code></pre><p>这段代码看第来比较长，实际上只有3个元素，最外层的div#outerBlock以及其中包含的img#image1和p#p1。</p>
+<p>注意代码第2行，我们让img#image1元素向右浮动，此时，该img元素的包含块就为div#outerBlock，也就是最外层的div块。</p>
+<p>这段代码会呈现什么效果呢？为了更加清晰地说明问题，我们这里分别给div#outerBlock以及p#p1加上边框以及内边距：</p>
+<pre><code>div#outerBlock {
+    border: 1px dotted;
+    padding: 3em;
+}
+p#p1 {
+    border: 1px solid;
+    padding: 3em;
+}
+</code></pre><p>效果如下：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju1.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>这里我们可以清楚地看到div#outerBlock、img#image1以及p#p1三者的位置关系。</p>
+<p>div#outerBlock是img元素的包含块，img元素的外边界不得超过其包含块的内边界。由于div#outerBlock元素增加了内边距padding=3em，故img元素的最右侧以及最上侧为虚线内3em。</p>
+<p>如果我们给img元素加上2em的外边距，可以预料到img元素右侧及上侧将会为虚线内5em。如下：</p>
+<pre><code>img#image1 {
+    margin: 2em;
+}
+</code></pre><p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju2.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>虽然看起来img元素很像包含在实线围起来的p元素中，事实上它的位置时依据它的包含块——虚线确定的，只是给img元素增加了2em的外边距，根据浮动元素外边界不超过其包含块内边界的原则，图像的边界将距离虚线5em。</p>
+<p>接下来，我们做一些改变，将img元素放到p#p1中去，如下：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+                &lt;p id=“p1”&gt;Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.
+                              One day in the Year of the Fox
+                              Came a time remembered well,
+                              WheOne day, in the Year of the Fox
+                              Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.   &lt;/p&gt;
+            &lt;/div&gt;
+</code></pre><p>注意看第9行，将img元素插入到了p元素中间。此时，img元素的包含块就变成了p#p1，页面结果如下：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju3.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>同样是浮动元素外边界不超过其包含块内边界的原则，此时图像的边距离实线距离为2em+3em=5em。此时的位置是根据实线确定的。</p>
+<p><strong>2、浮动元素的外边界是另一浮动元素的外边界。</strong></p>
+<hr>
+<p>关于这个问题，实际上是为了避免浮动元素彼此之间的覆盖。也就是说，如果一个向右浮动的元素，碰到了另一个浮动元素，那么它的外边界将是碰到的那个浮动元素的外边界。</p>
+<p>看下面的例子，这里我们包含2个img元素在p块中：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+    &lt;p id=“p1”&gt;Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image2”/&gt;
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.
+                  One day in the Year of the Fox
+                  Came a time remembered well,
+                  WheOne day, in the Year of the Fox
+                  Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.   &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p>注意看代码的9行以及15行，这里我们插入了2个img元素img#image1和img#image2。为了更清楚地展示以上准则，这里给img元素加上内边距以及边框：</p>
+<pre><code>img#image1 {
+    padding: 2em;
+    border: 1px solid;
+}
+img#image2 {
+    padding: 2em;
+    border: 1px solid;
+}
+</code></pre><p>得到的效果如下：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju4.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>说明一下，这里插入内边距是为了使边框更加清晰地展示边界。实际上，正如上面说的，浮动元素的外边界是另一浮动元素的外边界。</p>
+<p>这里还有一个细节问题，如果一个包含块中有2个浮动元素，并且这2个浮动元素的外边距宽度之和大于包含块的宽度，那么这2个浮动元素便只能上下排列，如下：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju6.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p><strong>3、浮动元素的顶端不能比之前出现的浮动元素的顶端更高。</strong></p>
+<hr>
+<p>这句话看起来很抽象，具体来说，假如现在有3个浮动块。第2个块在第1个块的下面，那么第3个块的顶端就是第2个块的顶端，而不会一直浮动到它们的包含块的内边界。</p>
+<p>请看下面的代码，我们插入3个浮动块：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+    &lt;img src=“images/test3.jpg” style=“float:left” alt=“plane” id=“image1”/&gt;
+    &lt;img src=“images/test4.jpg” style=“float:left” alt=“plane” id=“image2”/&gt;
+    &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image3”/&gt;
+    &lt;p id=“p1”&gt;Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.
+                  One day in the Year of the Fox
+                  Came a time remembered well,
+                  WheOne day, in the Year of the Fox
+                  Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.   &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p>注意代码的2、3、4行，我们插入了3个浮动img块。</p>
+<p>其中，img#image1向左浮动，img#image2向左浮动，img#image3向右浮动。前2个浮动块由于宽度之和超出了它们的包含块，它们将上下排列，第3个浮动img的上边界是第2个浮动img的上边界，而不是第1个！如下图所示：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju9.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>如上图所示，第三个浮动块img3，也就是右侧的小飞机，它的上边界不会超过在它之前的浮动元素的上边界。也就是说，它不会一直浮动到和img1等高的位置，它的上边界不超过img2的上边界。</p>
+<p><strong>4、浮动元素顶端不超过当前行</strong></p>
+<hr>
+<p>这条规则同3的功能类似，作用在于约束浮动块的上浮。主要针对浮动元素之前出现另一元素的情况而言。其实上面我们也看到了，只是没有刻意地拿出来说。不妨举两种情况作为例子来说。</p>
+<p>第一种，在一个段落里，出现一个浮动元素。</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+                &lt;p id=“p1”&gt;Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.
+                              One day in the Year of the Fox
+                              Came a time remembered well,
+                              WheOne day, in the Year of the Fox
+                              Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.   &lt;/p&gt;
+            &lt;/div&gt;
+</code></pre><p>注意以上代码的第9行，有一个浮动元素。第4条规则的意思就是说，浮动元素的顶端不会超过其上面To the temple of the king.所在的行。我们具体看以上代码的效果：</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju10.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>第二种情况，如果浮动元素出现在一个段落后面，那么该浮动元素上浮将不能超过该段落的底部。如下：</p>
+<pre><code>&lt;div class=“col-md-6” id=“outerBlock”&gt;
+                &lt;p id=“p1”&gt;Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.
+                              One day in the Year of the Fox
+                              Came a time remembered well,
+                              WheOne day, in the Year of the Fox
+                              Came a time remembered well,
+                              When the strong young man of the rising sun
+                              Heard the tolling of the great black bell.
+                              One day in the Year of the Fox,
+                              When the bell began to ring,
+                              It meant the time had come for one to go
+                              To the temple of the king.
+                              There in the middle of the circle he stands,
+                              Searching, seeking.
+                              With just one touch of his trembling hand,
+                              The answer will be found.
+                              Daylight waits while the old man sings,
+                              “Heaven help me!”
+                              And then like the rush of a thousand wings,
+                              It shines upon the One.
+                              And the day has just begun.   &lt;/p&gt;
+                              &lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+            &lt;/div&gt;
+</code></pre><p>我们将浮动块放在代码37行，处于块级兄弟元素p的后面，它的上浮情况如何呢？</p>
+<p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju11.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>很清楚地看到，浮动元素的顶部在p元素的下方。虽然它的包含块是虚线构成的div元素。</p>
+<p><strong>5、clear属性</strong></p>
+<hr>
+<p>如果我们不希望我们的某段内容流过浮动元素，我们可以使用clear属性，我们下面对比2种情况来看：</p>
+<pre><code>&lt;div  class=“col-md-3” id=“outerBlock”&gt;
+&lt;img src=“images/test1.jpg” style=“float:right” alt=“plane” id=“image1”/&gt;
+    &lt;p id=“p1”&gt;Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.
+                  One day in the Year of the Fox
+                  Came a time remembered well,
+                  WheOne day, in the Year of the Fox
+                  Came a time remembered well,
+                  When the strong young man of the rising sun
+                  Heard the tolling of the great black bell.
+                  One day in the Year of the Fox,
+                  When the bell began to ring,
+                  It meant the time had come for one to go
+                  To the temple of the king.
+                  There in the middle of the circle he stands,
+                  Searching, seeking.
+                  With just one touch of his trembling hand,
+                  The answer will be found.
+                  Daylight waits while the old man sings,
+                  “Heaven help me!”
+                  And then like the rush of a thousand wings,
+                  It shines upon the One.
+                  And the day has just begun.   &lt;/p&gt;
+&lt;/div&gt;
+</code></pre><p><img src="http://7xroh5.com1.z0.glb.clouddn.com/cssFloating-bianju12.jpg" alt="GitHub Mark" title="GitHub Mark"></p>
+<p>同样的一段代码，右侧的p元素添加clear:right，这样浮动元素将不会出现在其右侧。该p块将会被向下推，直到浮动元素的下面才会显示。</p>
+<h1 id="至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复"><a href="#至此，基本操作介绍完毕-如果有什么问题，欢迎评论问我，看到一定回复" class="headerlink" title="至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复"></a><strong>至此，基本操作介绍完毕,如果有什么问题，欢迎评论问我，看到一定回复</strong></h1><hr>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/css/">css</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
+        <div class="buttons is-centered">
+            
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Alipay. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>qrcode</code> for Wechat. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                <!-- Visit https://www.paypal.com/donate/buttons/ to get your donate button -->
+
+<div class="notification is-danger">
+    You forgot to set the <code>business</code> and <code>currency_code</code> for Paypal. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+                
+<div class="notification is-danger">
+    You forgot to set the <code>url</code> Patreon. Please set it in <code>_config.yml</code>.
+</div>
+
+                
+        </div>
+    </div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2018/04/22/promise/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">Promise 对象</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2017/12/06/js事件冒泡/">
+                <span class="level-item">js事件冒泡</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <nav class="level">
+            <div class="level-item has-text-centered">
+                <div>
+                    
+                        <img class="image is-128x128 has-mb-6" src="/images/avatar.png" alt="Your name">
+                    
+                    
+                    <p class="is-size-4 is-block">
+                        Your name
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-block">
+                        Your title
+                    </p>
+                    
+                    
+                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
+                        <i class="fas fa-map-marker-alt has-mr-7"></i>
+                        <span>Your location</span>
+                    </p>
+                    
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        文章
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        分类
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">
+                        标签
+                    </p>
+                    <p class="title has-text-weight-normal">
+                        7
+                    </p>
+                </div>
+            </div>
+        </nav>
+        <div class="level">
+            <a class="level-item button is-link is-rounded" href="http://github.com/ppoffice" target="_blank">
+                关注我</a>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Github" href="http://github.com/ppoffice">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Facebook" href="http://facebook.com">
+                
+                <i class="fab fa-facebook"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Twitter" href="http://twitter.com">
+                
+                <i class="fab fa-twitter"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="Dribbble" href="http://dribbble.com">
+                
+                <i class="fab fa-dribbble"></i>
+                
+            </a>
+            
+            <a class="level-item button is-white is-marginless" target="_blank"
+                title="RSS" href="/">
+                
+                <i class="fas fa-rss"></i>
+                
+            </a>
+            
+        </div>
+        
+    </div>
+</div>
+    
+        
+    
+        
+
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            链接
+        </h3>
+        <ul class="menu-list">
+        
+            <li>
+                <a class="level is-mobile" href="https://hexo.io" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">Hexo</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">hexo.io</span>
+                    </span>
+                </a>
+            </li>
+        
+            <li>
+                <a class="level is-mobile" href="https://github.com/ppoffice" target="_blank">
+                    <span class="level-left">
+                        <span class="level-item">PPOffice</span>
+                    </span>
+                    <span class="level-right">
+                        <span class="level-item tag">github.com</span>
+                    </span>
+                </a>
+            </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+
+
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                分类
+            </h3>
+            <ul class="menu-list">
+            <li>
+        <a class="level is-marginless" href="/categories/JS/">
+            <span class="level-start">
+                <span class="level-item">JS</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Js/">
+            <span class="level-start">
+                <span class="level-item">Js</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/Linux/">
+            <span class="level-start">
+                <span class="level-item">Linux</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/atom/">
+            <span class="level-start">
+                <span class="level-item">atom</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/css/">
+            <span class="level-start">
+                <span class="level-item">css</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hacker/">
+            <span class="level-start">
+                <span class="level-item">hacker</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li><li>
+        <a class="level is-marginless" href="/categories/hexo/">
+            <span class="level-start">
+                <span class="level-item">hexo</span>
+            </span>
+            <span class="level-end">
+                <span class="level-item tag">1</span>
+            </span>
+        </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            标签云
+        </h3>
+        <a href="/tags/Js/" style="font-size: 10px;">Js</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/es6/" style="font-size: 10px;">es6</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/插件/" style="font-size: 10px;">插件</a> <a href="/tags/权限/" style="font-size: 10px;">权限</a> <a href="/tags/视频解析/" style="font-size: 10px;">视频解析</a>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+            
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2018/04/22/promise/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Promise 对象">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-22T03:22:45.000Z">2018-04-22</time></div>
+                    <a href="/2018/04/22/promise/" class="has-link-black-ter is-size-6">Promise 对象</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/12/29/简说css浮动/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="简说css浮动">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-28T16:39:00.000Z">2017-12-29</time></div>
+                    <a href="/2017/12/29/简说css浮动/" class="has-link-black-ter is-size-6">简说css浮动</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/css/">css</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/12/06/js事件冒泡/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="js事件冒泡">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-05T16:11:32.000Z">2017-12-06</time></div>
+                    <a href="/2017/12/06/js事件冒泡/" class="has-link-black-ter is-size-6">js事件冒泡</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Js/">Js</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/12/04/VIP视频解析使用教程/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VIP视频解析使用教程">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-04T15:12:06.000Z">2017-12-04</time></div>
+                    <a href="/2017/12/04/VIP视频解析使用教程/" class="has-link-black-ter is-size-6">VIP视频解析使用教程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/hacker/">hacker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/12/04/介绍一款编译神器的插件-atom/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="介绍一款编译神器的插件(atom)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-04T15:12:06.000Z">2017-12-04</time></div>
+                    <a href="/2017/12/04/介绍一款编译神器的插件-atom/" class="has-link-black-ter is-size-6">介绍一款编译神器的插件(atom)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/atom/">atom</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+        
+            <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Js/">
+                        <span class="tag">Js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/插件/">
+                        <span class="tag">插件</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/权限/">
+                        <span class="tag">权限</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/视频解析/">
+                        <span class="tag">视频解析</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+        
+        </div>
+    
+</div>
+
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
+    
+        
+<div class="card widget">
+    <div class="card-content">
+        <h3 class="menu-label">
+            最新文章
+        </h3>
+        
+        <article class="media">
+            
+            <a href="/2018/04/22/promise/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="Promise 对象">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-04-22T03:22:45.000Z">2018-04-22</time></div>
+                    <a href="/2018/04/22/promise/" class="has-link-black-ter is-size-6">Promise 对象</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/JS/">JS</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/12/29/简说css浮动/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="简说css浮动">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-28T16:39:00.000Z">2017-12-29</time></div>
+                    <a href="/2017/12/29/简说css浮动/" class="has-link-black-ter is-size-6">简说css浮动</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/css/">css</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/12/06/js事件冒泡/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="js事件冒泡">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-05T16:11:32.000Z">2017-12-06</time></div>
+                    <a href="/2017/12/06/js事件冒泡/" class="has-link-black-ter is-size-6">js事件冒泡</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/Js/">Js</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/12/04/VIP视频解析使用教程/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="VIP视频解析使用教程">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-04T15:12:06.000Z">2017-12-04</time></div>
+                    <a href="/2017/12/04/VIP视频解析使用教程/" class="has-link-black-ter is-size-6">VIP视频解析使用教程</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/hacker/">hacker</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2017/12/04/介绍一款编译神器的插件-atom/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="介绍一款编译神器的插件(atom)">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2017-12-04T15:12:06.000Z">2017-12-04</time></div>
+                    <a href="/2017/12/04/介绍一款编译神器的插件-atom/" class="has-link-black-ter is-size-6">介绍一款编译神器的插件(atom)</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/atom/">atom</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+    </div>
+</div>
+
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+        <h3 class="menu-label">
+            归档
+        </h3>
+        <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2018/04/">
+                <span class="level-start">
+                    <span class="level-item">四月 2018</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">1</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/12/">
+                <span class="level-start">
+                    <span class="level-item">十二月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">4</span>
+                </span>
+            </a>
+        </li>
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2017/11/">
+                <span class="level-start">
+                    <span class="level-item">十一月 2017</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">2</span>
+                </span>
+            </a>
+        </li>
+        
+        </ul>
+        </div>
+    </div>
+</div>
+    
+        <div class="card widget">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                标签
+            </h3>
+            <div class="field is-grouped is-grouped-multiline">
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/Js/">
+                        <span class="tag">Js</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/css/">
+                        <span class="tag">css</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/es6/">
+                        <span class="tag">es6</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/hexo/">
+                        <span class="tag">hexo</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/插件/">
+                        <span class="tag">插件</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/权限/">
+                        <span class="tag">权限</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+                <div class="control">
+                    <a class="tags has-addons" href="/tags/视频解析/">
+                        <span class="tag">视频解析</span>
+                        <span class="tag is-grey">1</span>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+</div>
+
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.svg" alt="简说css浮动" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Bana Datura&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
+                        
+                        <i class="fab fa-creative-commons"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
+                        
+                        <i class="fab fa-creative-commons-by"></i>
+                        
+                    </a>
+                </p>
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="http://github.com/ppoffice/hexo-theme-icarus">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+
+    
+    
+    
+    <script src="/js/animation.js"></script>
+    
+
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+    <script src="/js/gallery.js" defer></script>
+    
+
+    
+    
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+
+    
+    
+
+<a id="back-to-top" title="回到顶端" href="javascript:;">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+
+    
+    
+
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+    <script src="/js/clipboard.js" defer></script>
+    
+
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
