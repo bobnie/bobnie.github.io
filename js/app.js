@@ -10,48 +10,26 @@ var customSearch;
 		$('html, body').animate({ 'scrollTop': $elem.offset().top - correction }, 400);
 	};
 
-  function setBackToTop(){
-    const $top = $('.s-top', '.l_body');
-    let pos = document.body.scrollTop;
-		$(document, window).scroll(() => {
-			const scrollTop = $(window).scrollTop();
-			const del = scrollTop - pos;
-			if (scrollTop > 150) {
-				pos = scrollTop;
-				$top.addClass('show');
-        if (del > 0) {
-          $top.removeClass('hl');
-        } else {
-          $top.addClass('hl');
-        }
-			} else {
-				pos = scrollTop;
-				$top.removeClass('show').removeClass('hl');
-			}
-		});
-    $top.click(()=>scrolltoElement(document.body));
-  }
-
 	function setHeader() {
 		if (!window.subData) return;
 		const $wrapper = $('header .wrapper');
 		const $comment = $('.s-comment', $wrapper);
 		const $toc = $('.s-toc', $wrapper);
+		const $top = $('.s-top',$wrapper);
 
 		$wrapper.find('.nav-sub .logo').text(window.subData.title);
 		let pos = document.body.scrollTop;
 		$(document, window).scroll(() => {
 			const scrollTop = $(window).scrollTop();
 			const del = scrollTop - pos;
-			if (del >= 50 && scrollTop > 100) {
+			if (del >= 20) {
 				pos = scrollTop;
 				$wrapper.addClass('sub');
-			} else if (del <= -50) {
+			} else if (del <= -20) {
 				pos = scrollTop;
 				$wrapper.removeClass('sub');
 			}
 		});
-
 		// bind events to every btn
 		const $commentTarget = $('#comments');
 		if ($commentTarget.length) {
@@ -63,39 +41,50 @@ var customSearch;
 			$toc.click((e) => { e.stopPropagation(); $tocTarget.toggleClass('active'); });
 		} else $toc.remove();
 
-	}
+		$top.click(()=>scrolltoElement(document.body));
 
+	}
 	function setHeaderMenu() {
-    var $headerMenu = $('header .menu');
-    // 先把已经激活的取消激活
-    $headerMenu.find('li a.active').removeClass('active');
-		// var $underline = $headerMenu.find('.underline');
-		function setUnderline($item) {
-			// if (!transition) $underline.addClass('disable-trans');
+		var $headerMenu = $('header .menu');
+		var $underline = $headerMenu.find('.underline');
+		function setUnderline($item, transition) {
+			$item = $item || $headerMenu.find('li a.active');//get instant
+			transition = transition === undefined ? true : !!transition;
+			if (!transition) $underline.addClass('disable-trans');
 			if ($item && $item.length) {
 				$item.addClass('active').siblings().removeClass('active');
+				$underline.css({
+					left: $item.position().left,
+					width: $item.innerWidth()
+				});
+			} else {
+				$underline.css({
+					left: 0,
+					width: 0
+				});
+			}
+			if (!transition) {
+				setTimeout(function () { $underline.removeClass('disable-trans') }, 0);//get into the queue.
 			}
 		}
+		$headerMenu.on('mouseenter', 'li', function (e) {
+			setUnderline($(e.currentTarget));
+		});
+		$headerMenu.on('mouseout', function () {
+			setUnderline();
+		});
 		//set current active nav
 		var $active_link = null;
-    var idname = location.pathname.replace(/\/|%/g, "");
-    if (idname.length == 0) {
-      idname = "home";
-    }
-		var page = idname.match(/page\d{0,}$/g);
-		if (page) {
-			page = page[0];
-			idname = idname.split(page)[0];
+		if (location.pathname === '/' || location.pathname.startsWith('/page/')) {
+			$active_link = $('.nav-home', $headerMenu);
+		} else {
+			var name = location.pathname.match(/\/(.*?)\//);
+			if (name.length > 1) {
+				$active_link = $('.nav-' + name[1], $headerMenu);
+			}
 		}
-    var index = idname.match(/index.html/);
-    if (index) {
-      index = index[0];
-      idname = idname.split(index)[0];
-    }
-    $active_link = $('#' + idname, $headerMenu);
-    setUnderline($active_link);
+		setUnderline($active_link, false);
 	}
-
 	function setHeaderMenuPhone() {
 		var $switcher = $('.l_header .switcher .s-menu');
 		$switcher.click(function (e) {
@@ -108,7 +97,6 @@ var customSearch;
 			$switcher.removeClass('active');
 		});
 	}
-
 	function setHeaderSearch() {
 		var $switcher = $('.l_header .switcher .s-search');
 		var $header = $('.l_header');
@@ -124,54 +112,33 @@ var customSearch;
 		});
 		$search.click(function (e) {
 			e.stopPropagation();
-		});
-    $header.ready(function () {
-      $header.bind('keydown', function (event) {
-        if (event.keyCode == 9) {
-          return false;
-        } else {
-          var isie = (document.all) ? true: false;
-          var key;
-          var ev;
-          if (isie) { //IE浏览器
-            key = window.event.keyCode;
-            ev = window.event;
-          } else { //火狐浏览器
-            key = e.which;
-            ev = e;
-          }
-          if (key == 9) { //IE浏览器
-            if (isie) {
-              ev.keyCode = 0;
-              ev.returnValue = false;
-            } else { //火狐浏览器
-              ev.which = 0;
-              ev.preventDefault();
-            }
-          }
-        }
-      });
-    });
+		})
 	}
-
+	function setWaves() {
+		Waves.attach('.flat-btn', ['waves-button']);
+		Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+		Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+		Waves.attach('.flat-box', ['waves-block']);
+		Waves.attach('.float-box', ['waves-block', 'waves-float']);
+		Waves.attach('.waves-image');
+		Waves.init();
+	}
+	function setScrollReveal() {
+		const $reveal = $('.reveal');
+		if ($reveal.length === 0) return;
+		const sr = ScrollReveal({ distance: 0 });
+		sr.reveal('.reveal');
+	}
 	function setTocToggle() {
 		const $toc = $('.toc-wrapper');
 		if ($toc.length === 0) return;
-		// $toc.click((e) => {
-        //     e.stopPropagation();
-        //     $toc.addClass('active');
-        // });
+		$toc.click((e) => { e.stopPropagation(); $toc.addClass('active'); });
 		$(document).click(() => $toc.removeClass('active'));
 
 		$toc.on('click', 'a', (e) => {
 			e.preventDefault();
 			e.stopPropagation();
-			if (e.target.tagName === 'A') {
-        scrolltoElement(e.target);
-      } else if (e.target.tagName === 'SPAN') {
-        scrolltoElement(e.target.parentElement);
-      }
-      $toc.removeClass('active');
+			scrolltoElement(e.target.tagName.toLowerCase === 'a' ? e.target : e.target.parentElement);
 		});
 
 		const liElements = Array.from($toc.find('li a'));
@@ -203,6 +170,33 @@ var customSearch;
 		scrollListener();
 	}
 
+	// function getPicture() {
+	// 	const $banner = $('.banner');
+	// 	if ($banner.length === 0) return;
+	// 	const url = ROOT + 'js/lovewallpaper.json';
+	// 	$.get(url).done(res => {
+	// 		if (res.data.length > 0) {
+	// 			const index = Math.floor(Math.random() * res.data.length);
+	// 			$banner.css('background-image', 'url(' + res.data[index].big + ')');
+	// 		}
+	// 	})
+	// }
+
+	// function getHitokoto() {
+	// 	const $hitokoto = $('#hitokoto');
+	// 	if($hitokoto.length === 0) return;
+	// 	const url = 'http://api.hitokoto.us/rand?length=80&encode=jsc&fun=handlerHitokoto';
+	// 	$('body').append('<script	src="%s"></script>'.replace('%s',url));
+	// 	window.handlerHitokoto = (data) => {
+	// 		$hitokoto
+	// 			.css('color','transparent')
+	// 			.text(data.hitokoto)
+	// 		if(data.source) $hitokoto.append('<cite> ——  %s</cite>'.replace('%s',data.source));
+	// 		else if(data.author) $hitokoto.append('<cite> ——  %s</cite>'.replace('%s',data.author));
+	// 		$hitokoto.css('color','white');
+	// 	}
+	// }
+
 
 	$(function () {
 		//set header
@@ -210,10 +204,14 @@ var customSearch;
 		setHeaderMenu();
 		setHeaderMenuPhone();
 		setHeaderSearch();
-
+		setWaves();
+		setScrollReveal();
 		setTocToggle();
-    setBackToTop();
-		// $(".article .video-container").fitVids();
+		// getHitokoto();
+		// getPicture();
+
+
+		$(".article .video-container").fitVids();
 
 		setTimeout(function () {
 			$('#loading-bar-wrapper').fadeOut(500);
